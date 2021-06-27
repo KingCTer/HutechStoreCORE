@@ -1,11 +1,7 @@
 ﻿using HutechStore.Data.Configurations;
 using HutechStore.Data.Entities;
+using HutechStore.Data.Extensions;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HutechStore.Data.EF
 {
@@ -17,6 +13,7 @@ namespace HutechStore.Data.EF
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //Configure using Fluent API
             modelBuilder.ApplyConfiguration(new CartConfiguration());
 
             modelBuilder.ApplyConfiguration(new AppConfigConfiguration());
@@ -37,6 +34,9 @@ namespace HutechStore.Data.EF
             modelBuilder.ApplyConfiguration(new PromotionConfiguration());
 
             modelBuilder.ApplyConfiguration(new TransactionConfiguration());
+
+            //Data Seeding
+            modelBuilder.Seed();
 
             //base.OnModelCreating(modelBuilder);
         }
