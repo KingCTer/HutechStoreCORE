@@ -10,6 +10,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HutechStore.Data", "HutechStore.Data\HutechStore.Data.csproj", "{785C8403-3D22-4E0B-BAB1-D0F32C43B33A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HutechStore.Application", "HutechStore.Application\HutechStore.Application.csproj", "{ECC7821A-BE01-495C-94AA-51352A4E82FB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +24,14 @@ Global
 		{EBF4C564-71C5-4ABC-B9CD-EB399322D4F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EBF4C564-71C5-4ABC-B9CD-EB399322D4F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EBF4C564-71C5-4ABC-B9CD-EB399322D4F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{785C8403-3D22-4E0B-BAB1-D0F32C43B33A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{785C8403-3D22-4E0B-BAB1-D0F32C43B33A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{785C8403-3D22-4E0B-BAB1-D0F32C43B33A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{785C8403-3D22-4E0B-BAB1-D0F32C43B33A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECC7821A-BE01-495C-94AA-51352A4E82FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECC7821A-BE01-495C-94AA-51352A4E82FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECC7821A-BE01-495C-94AA-51352A4E82FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECC7821A-BE01-495C-94AA-51352A4E82FB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
