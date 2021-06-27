@@ -1,11 +1,14 @@
 ﻿using HutechStore.Data.Configurations;
 using HutechStore.Data.Entities;
 using HutechStore.Data.Extensions;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace HutechStore.Data.EF
 {
-    public class HutechStoreDbContext : DbContext
+    public class HutechStoreDbContext : IdentityDbContext<AppUser, AppRole, Guid>
     {
         public HutechStoreDbContext(DbContextOptions options) : base(options)
         {
@@ -14,9 +17,9 @@ namespace HutechStore.Data.EF
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //Configure using Fluent API
-            modelBuilder.ApplyConfiguration(new CartConfiguration());
-
             modelBuilder.ApplyConfiguration(new AppConfigConfiguration());
+
+            modelBuilder.ApplyConfiguration(new CartConfiguration());
 
             modelBuilder.ApplyConfiguration(new LanguageConfiguration());
 
@@ -30,10 +33,19 @@ namespace HutechStore.Data.EF
             modelBuilder.ApplyConfiguration(new OrderDetailConfiguration());
 
             modelBuilder.ApplyConfiguration(new ContactConfiguration());
-
             modelBuilder.ApplyConfiguration(new PromotionConfiguration());
-
             modelBuilder.ApplyConfiguration(new TransactionConfiguration());
+
+            modelBuilder.ApplyConfiguration(new AppUserConfiguration());
+            modelBuilder.ApplyConfiguration(new AppRoleConfiguration());
+
+            //Identity database
+            modelBuilder.Entity<IdentityUserClaim<Guid>>().ToTable("AppUserClaims");
+            modelBuilder.Entity<IdentityUserRole<Guid>>().ToTable("AppUserRoles").HasKey(x => new { x.UserId, x.RoleId });
+            modelBuilder.Entity<IdentityUserLogin<Guid>>().ToTable("AppUserLogins").HasKey(x => x.UserId);
+
+            modelBuilder.Entity<IdentityRoleClaim<Guid>>().ToTable("AppRoleClaims");
+            modelBuilder.Entity<IdentityUserToken<Guid>>().ToTable("AppUserTokens").HasKey(x => x.UserId);
 
             //Data Seeding
             modelBuilder.Seed();

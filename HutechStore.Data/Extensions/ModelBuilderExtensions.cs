@@ -1,5 +1,6 @@
 ﻿using HutechStore.Data.Entities;
 using HutechStore.Data.Enums;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
 
@@ -107,6 +108,41 @@ namespace HutechStore.Data.Extensions
             modelBuilder.Entity<ProductInCategory>().HasData(
                 new ProductInCategory() { ProductId = 1, CategoryId = 1 }
                 );
+
+
+            // any guid
+            var roleId = new Guid("B5B7BCF5-52F7-4E91-96C3-6F020BD84BC3");
+            var adminId = new Guid("6A924915-E5B4-4DD5-9D37-81D6DDFA5070");
+            modelBuilder.Entity<AppRole>().HasData(new AppRole
+            {
+                Id = roleId,
+                Name = "admin",
+                NormalizedName = "admin",
+                Description = "Administrator role"
+            });
+
+            var hasher = new PasswordHasher<AppUser>();
+            modelBuilder.Entity<AppUser>().HasData(new AppUser
+            {
+                Id = adminId,
+                UserName = "admin",
+                NormalizedUserName = "admin",
+                Email = "kingcter@ptd.edu.vn",
+                NormalizedEmail = "kingcter@ptd.edu.vn",
+                EmailConfirmed = true,
+                PasswordHash = hasher.HashPassword(null, "DungKhoa0TM@1902"),
+                SecurityStamp = string.Empty,
+                FirstName = "Dung",
+                LastName = "Nguyen",
+                Dob = new DateTime(2000, 02, 19)
+            });
+
+            modelBuilder.Entity<IdentityUserRole<Guid>>().HasData(new IdentityUserRole<Guid>
+            {
+                RoleId = roleId,
+                UserId = adminId
+            });
         }
     }
+    
 }

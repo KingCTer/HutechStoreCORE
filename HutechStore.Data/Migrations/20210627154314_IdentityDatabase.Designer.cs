@@ -4,14 +4,16 @@ using HutechStore.Data.EF;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HutechStore.Data.Migrations
 {
     [DbContext(typeof(HutechStoreDbContext))]
-    partial class HutechStoreDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210627154314_IdentityDatabase")]
+    partial class IdentityDatabase
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -73,16 +75,6 @@ namespace HutechStore.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("AppRoles");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("b5b7bcf5-52f7-4e91-96c3-6f020bd84bc3"),
-                            ConcurrencyStamp = "b4534b77-7b3b-4de4-9f06-9983a6412c21",
-                            Description = "Administrator role",
-                            Name = "admin",
-                            NormalizedName = "admin"
-                        });
                 });
 
             modelBuilder.Entity("HutechStore.Data.Entities.AppUser", b =>
@@ -149,27 +141,6 @@ namespace HutechStore.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("AppUsers");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("6a924915-e5b4-4dd5-9d37-81d6ddfa5070"),
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "a22d7970-bdec-4e49-8c39-0267981cfff0",
-                            Dob = new DateTime(2000, 2, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "kingcter@ptd.edu.vn",
-                            EmailConfirmed = true,
-                            FirstName = "Dung",
-                            LastName = "Nguyen",
-                            LockoutEnabled = false,
-                            NormalizedEmail = "kingcter@ptd.edu.vn",
-                            NormalizedUserName = "admin",
-                            PasswordHash = "AQAAAAEAACcQAAAAEOoHH1khkCS4rm6K2lp1rT0SXnrZ73IjpNdbJ6JLP+U5XZl95I0mm483AdEwkL1atA==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "",
-                            TwoFactorEnabled = false,
-                            UserName = "admin"
-                        });
                 });
 
             modelBuilder.Entity("HutechStore.Data.Entities.Cart", b =>
@@ -418,7 +389,7 @@ namespace HutechStore.Data.Migrations
                     b.Property<DateTime>("OrderDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2021, 6, 27, 22, 58, 5, 495, DateTimeKind.Local).AddTicks(33));
+                        .HasDefaultValue(new DateTime(2021, 6, 27, 22, 43, 13, 708, DateTimeKind.Local).AddTicks(8740));
 
                     b.Property<string>("ShipAddress")
                         .IsRequired()
@@ -511,7 +482,7 @@ namespace HutechStore.Data.Migrations
                         new
                         {
                             Id = 1,
-                            DateCreated = new DateTime(2021, 6, 27, 22, 58, 5, 504, DateTimeKind.Local).AddTicks(5846),
+                            DateCreated = new DateTime(2021, 6, 27, 22, 43, 13, 719, DateTimeKind.Local).AddTicks(6231),
                             OriginalPrice = 100000m,
                             Price = 200000m,
                             Stock = 0,
@@ -775,13 +746,6 @@ namespace HutechStore.Data.Migrations
                     b.HasKey("UserId", "RoleId");
 
                     b.ToTable("AppUserRoles");
-
-                    b.HasData(
-                        new
-                        {
-                            UserId = new Guid("6a924915-e5b4-4dd5-9d37-81d6ddfa5070"),
-                            RoleId = new Guid("b5b7bcf5-52f7-4e91-96c3-6f020bd84bc3")
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Guid>", b =>
