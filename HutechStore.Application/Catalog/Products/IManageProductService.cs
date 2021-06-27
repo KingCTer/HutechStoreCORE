@@ -1,6 +1,7 @@
-﻿using HutechStore.Application.Catalog.Products.Dtos;
-using HutechStore.Application.Catalog.Products.Dtos.Manage;
-using HutechStore.Application.Dtos;
+﻿using HutechStore.ViewModels.Catalog.Products;
+using HutechStore.ViewModels.Common;
+using Microsoft.AspNetCore.Http;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace HutechStore.Application.Catalog.Products
@@ -19,7 +20,14 @@ namespace HutechStore.Application.Catalog.Products
 
         Task AddViewCount(int productId);
 
+        Task<PagedResult<ProductViewModel>> GetAllPaging(GetManageProductPagingRequest request);
 
-        Task<PagedResult<ProductViewModel>> GetAllPaging(GetProductPagingRequest request);
+        Task<int> AddImages(int productId, List<IFormFile> files);
+
+        Task<int> RemoveImages(int imageId);
+
+        Task<int> UpdateImage(int imageId, string caption, bool isDefault);
+
+        Task<List<ProductImageViewModel>> GetListImage(int productId);
     }
 }

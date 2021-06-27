@@ -1,7 +1,6 @@
-﻿using HutechStore.Application.Catalog.Products.Dtos;
-using HutechStore.Application.Catalog.Products.Dtos.Public;
-using HutechStore.Application.Dtos;
-using HutechStore.Data.EF;
+﻿using HutechStore.Data.EF;
+using HutechStore.ViewModels.Catalog.Products;
+using HutechStore.ViewModels.Common;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -20,7 +19,7 @@ namespace HutechStore.Application.Catalog.Products
             _context = context;
         }
 
-        public async Task<PagedResult<ProductViewModel>> GetAllByCategoryId(GetProductPagingRequest request)
+        public async Task<PagedResult<ProductViewModel>> GetAllByCategoryId(GetPublicProductPagingRequest request)
         {
             //1. Select join
             var query = from p in _context.Products
