@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\HutechStore.Data\HutechStore.Data.csproj" />
+    <ProjectReference Include="..\HutechStore.Utilities\HutechStore.Utilities.csproj" />
   </ItemGroup>
 
 </Project>

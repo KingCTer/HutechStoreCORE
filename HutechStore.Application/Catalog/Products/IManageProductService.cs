@@ -1,9 +1,6 @@
 ﻿using HutechStore.Application.Catalog.Products.Dtos;
+using HutechStore.Application.Catalog.Products.Dtos.Manage;
 using HutechStore.Application.Dtos;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace HutechStore.Application.Catalog.Products
@@ -16,8 +13,13 @@ namespace HutechStore.Application.Catalog.Products
 
         Task<int> Delete(int productId);
 
-        Task<List<ProductViewModel>> GetAll();
+        Task<bool> UpdatePrice(int productId, decimal newPrice);
 
-        Task<PagedViewModel<ProductViewModel>> GetAllPaging(string keyword, int pageIndex, int pageSize);
+        Task<bool> UpdateStock(int productId, int addedQuantity);
+
+        Task AddViewCount(int productId);
+
+
+        Task<PagedResult<ProductViewModel>> GetAllPaging(GetProductPagingRequest request);
     }
 }
