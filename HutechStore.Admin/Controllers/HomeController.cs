@@ -1,4 +1,5 @@
 ﻿using HutechStore.Admin.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace HutechStore.Admin.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -20,6 +22,8 @@ namespace HutechStore.Admin.Controllers
 
         public IActionResult Index()
         {
+            var user = User.Identity.Name;
+
             return View();
         }
 
