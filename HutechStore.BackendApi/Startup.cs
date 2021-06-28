@@ -1,4 +1,5 @@
 using HutechStore.Application.Catalog.Products;
+using HutechStore.Application.Common;
 using HutechStore.Data.EF;
 using HutechStore.Utilities.Constants;
 using Microsoft.AspNetCore.Builder;
@@ -35,7 +36,10 @@ namespace HutechStore.BackendApi
             );
 
             //Declare DI
+            services.AddTransient<IStorageService, FileStorageService>();
             services.AddTransient<IPublicProductService, PublicProductService>();
+            services.AddTransient<IManageProductService, ManageProductService>();
+            
 
             //Main
             services.AddControllersWithViews();

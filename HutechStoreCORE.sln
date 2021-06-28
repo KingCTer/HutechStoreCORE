@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31410.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HutechStore.Web", "HutechStore.Web\HutechStore.Web.csproj", "{EBF4C564-71C5-4ABC-B9CD-EB399322D4F8}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{40CF4000-BE73-4D3A-A106-B1429E539E4F}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0. Solution Items", "0. Solution Items", "{40CF4000-BE73-4D3A-A106-B1429E539E4F}"
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
 	EndProjectSection
@@ -18,7 +18,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HutechStore.Utilities", "Hu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HutechStore.ViewModels", "HutechStore.ViewModels\HutechStore.ViewModels.csproj", "{87A60664-400B-4303-9578-9F0DC958CB90}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HutechStore.BackendApi", "HutechStore.BackendApi\HutechStore.BackendApi.csproj", "{7E7DB293-D75D-42A8-B617-3732ACB0B5FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HutechStore.BackendApi", "HutechStore.BackendApi\HutechStore.BackendApi.csproj", "{7E7DB293-D75D-42A8-B617-3732ACB0B5FF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. Domain", "2. Domain", "{40C10252-0FE5-4163-B860-97E785D4C2C7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. Infrastructure", "1. Infrastructure", "{A92F6D8F-3A97-49B9-A867-B96A542CA338}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +57,12 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{785C8403-3D22-4E0B-BAB1-D0F32C43B33A} = {40C10252-0FE5-4163-B860-97E785D4C2C7}
+		{ECC7821A-BE01-495C-94AA-51352A4E82FB} = {40C10252-0FE5-4163-B860-97E785D4C2C7}
+		{A965181B-28EC-441F-A197-F23764B77DAF} = {A92F6D8F-3A97-49B9-A867-B96A542CA338}
+		{87A60664-400B-4303-9578-9F0DC958CB90} = {A92F6D8F-3A97-49B9-A867-B96A542CA338}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8AB94898-1E58-4F48-B6D3-CB3698F84348}
