@@ -1,4 +1,6 @@
-﻿@{
+﻿@using HutechStore.ViewModels.System.Users
+@model LoginRequest
+@{
     Layout = null;
 }
 
@@ -73,34 +75,35 @@
                     <!--begin::Signin-->
                     <div class="login-form">
                         <!--begin::Form-->
-                        <form class="form" id="kt_login_singin_form" action="">
+                        <form asp-controller="User" asp-action="Login" method="post">
                             <!--begin::Title-->
                             <div class="pb-5 pb-lg-15">
-                                <h3 class="font-weight-bolder text-dark font-size-h2 font-size-h1-lg">Sign In</h3>
-                                <div class="text-muted font-weight-bold font-size-h4">
-                                    New Here?
-                                    <a href="custom/pages/login/login-3/signup.html" class="text-primary font-weight-bolder">Create Account</a>
-                                </div>
+                                <h3 class="font-weight-bolder text-dark font-size-h2 font-size-h1-lg">Đăng Nhập</h3>
                             </div>
                             <!--begin::Title-->
                             <!--begin::Form group-->
                             <div class="form-group">
-                                <label class="font-size-h6 font-weight-bolder text-dark">Your Email</label>
-                                <input class="form-control h-auto py-7 px-6 rounded-lg border-0" type="text" name="username" autocomplete="off" />
+                                <label class="font-size-h6 font-weight-bolder text-dark">Tên đăng nhập</label>
+                                <input class="form-control h-auto py-7 px-6 rounded-lg border-0" asp-for="UserName" type="text" name="username" autocomplete="off" />
                             </div>
                             <!--end::Form group-->
                             <!--begin::Form group-->
                             <div class="form-group">
                                 <div class="d-flex justify-content-between mt-n5">
-                                    <label class="font-size-h6 font-weight-bolder text-dark pt-5">Your Name</label>
-                                    <a href="custom/pages/login/login-3/forgot.html" class="text-primary font-size-h6 font-weight-bolder text-hover-primary pt-5">Forgot Password ?</a>
+                                    <label class="font-size-h6 font-weight-bolder text-dark pt-5">Mật khẩu</label>
+                                    <a href="/User/FogotPassword" class="text-primary font-size-h6 font-weight-bolder text-hover-primary pt-5">Quên mật khẩu ?</a>
                                 </div>
-                                <input class="form-control h-auto py-7 px-6 rounded-lg border-0" type="password" name="password" autocomplete="off" />
+                                <input class="form-control h-auto py-7 px-6 rounded-lg border-0" asp-for="Password" type="password" name="password" autocomplete="off" />
                             </div>
+                            <label class="checkbox checkbox-lg text-primary font-size-h6 font-weight-bolder text-hover-primary my-6">
+                                <input asp-for="RememberMe" type="checkbox" checked="checked" name="rememberMe">
+                                <span class="mr-3"></span>Duy trì đăng nhập
+                            </label>
                             <!--end::Form group-->
                             <!--begin::Action-->
+
                             <div class="pb-lg-0 pb-5">
-                                <button type="submit" id="kt_login_singin_form_submit_button" class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-3">Sign In</button>
+                                <button type="submit" value="Submit" id="kt_login_singin_form_submit_button" class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-3">Đăng Nhập</button>
                                 <button type="button" class="btn btn-light-primary font-weight-bolder px-8 py-4 my-3 font-size-lg">
                                     <span class="svg-icon svg-icon-md">
                                         <!--begin::Svg Icon | path:assets/media/svg/social-icons/google.svg-->

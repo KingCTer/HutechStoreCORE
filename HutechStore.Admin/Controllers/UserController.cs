@@ -1,4 +1,5 @@
-﻿using HutechStore.ViewModels.System.Users;
+﻿using HutechStore.Admin.Services;
+using HutechStore.ViewModels.System.Users;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,13 @@ namespace HutechStore.Admin.Controllers
 {
     public class UserController : Controller
     {
+        private readonly IUserApiClient _userApiClient;
+
+        public UserController(IUserApiClient userApiClient)
+        {
+            _userApiClient = userApiClient;
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -21,9 +29,14 @@ namespace HutechStore.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult Login(LoginRequest request)
+        public async Task<IActionResult> Login(LoginRequest request)
         {
-            return View();
+            if (!ModelState.IsValid)
+                return View(ModelState);
+
+            var token = await _userApiClient.Authenticate(request);
+
+            return View(token);
         }
 
     }
