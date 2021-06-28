@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using HutechStore.Application.Catalog.Products;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,10 +12,19 @@ namespace HutechStore.BackendApi.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
+        private readonly IPublicProductService _publicProductService;
+
+        public ProductController(IPublicProductService publicProductService)
+        {
+            _publicProductService = publicProductService;
+        }
+
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            return Ok("Test OK");
+            var products = await _publicProductService.GetAll();
+
+            return Ok(products);
         }
     }
 }

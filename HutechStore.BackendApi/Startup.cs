@@ -1,3 +1,4 @@
+using HutechStore.Application.Catalog.Products;
 using HutechStore.Data.EF;
 using HutechStore.Utilities.Constants;
 using Microsoft.AspNetCore.Builder;
@@ -26,10 +27,14 @@ namespace HutechStore.BackendApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //ConnectionString
             services.AddDbContext<HutechStoreDbContext>(
                 options =>
                     options.UseSqlServer(Configuration.GetConnectionString(SystemConstants.MainConnectionString))
             );
+
+            //Declare DI
+            services.AddTransient<IPublicProductService, PublicProductService>();
 
             services.AddControllersWithViews();
         }
