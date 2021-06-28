@@ -1,9 +1,11 @@
+using FluentValidation.AspNetCore;
 using HutechStore.Application.Catalog.Products;
 using HutechStore.Application.Common;
 using HutechStore.Application.System.Users;
 using HutechStore.Data.EF;
 using HutechStore.Data.Entities;
 using HutechStore.Utilities.Constants;
+using HutechStore.ViewModels.System.Users;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -56,7 +58,8 @@ namespace HutechStore.BackendApi
             services.AddTransient<IUserService, UserService>();
 
             //Main
-            services.AddControllers();
+            services.AddControllers()
+                .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<LoginRequestValidator>());
 
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
