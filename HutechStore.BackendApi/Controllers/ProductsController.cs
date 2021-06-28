@@ -1,6 +1,7 @@
 ﻿using HutechStore.Application.Catalog.Products;
 using HutechStore.ViewModels.Catalog.ProductImages;
 using HutechStore.ViewModels.Catalog.Products;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -23,6 +24,7 @@ namespace HutechStore.BackendApi.Controllers
 
         //http://localhost:port/Products?pageIndex=1&pageSize=10&CategoryId=
         [HttpGet("{languageId}")]
+        [Authorize]
         public async Task<IActionResult> GetAllPaging(string languageId, [FromQuery] GetPublicProductPagingRequest request)
         {
             var products = await _publicProductService.GetAllByCategoryId(languageId, request);
