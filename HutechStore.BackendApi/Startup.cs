@@ -1,10 +1,13 @@
 using HutechStore.Application.Catalog.Products;
 using HutechStore.Application.Common;
+using HutechStore.Application.System.Users;
 using HutechStore.Data.EF;
+using HutechStore.Data.Entities;
 using HutechStore.Utilities.Constants;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -35,11 +38,20 @@ namespace HutechStore.BackendApi
                     options.UseSqlServer(Configuration.GetConnectionString(SystemConstants.MainConnectionString))
             );
 
+            services.AddIdentity<AppUser, AppRole>()
+                .AddEntityFrameworkStores<HutechStoreDbContext>()
+                .AddDefaultTokenProviders();
+
             //Declare DI
             services.AddTransient<IStorageService, FileStorageService>();
+
             services.AddTransient<IPublicProductService, PublicProductService>();
             services.AddTransient<IManageProductService, ManageProductService>();
-            
+
+            services.AddTransient<UserManager<AppUser>, UserManager<AppUser>>();
+            services.AddTransient<SignInManager<AppUser>, SignInManager<AppUser>>();
+            services.AddTransient<RoleManager<AppRole>, RoleManager<AppRole>>();
+            services.AddTransient<IUserService, UserService>();
 
             //Main
             services.AddControllersWithViews();
@@ -49,7 +61,6 @@ namespace HutechStore.BackendApi
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Swagger HutechStoreCORE", Version = "v1" });
             });
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
