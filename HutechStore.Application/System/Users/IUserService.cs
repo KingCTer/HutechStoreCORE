@@ -1,8 +1,5 @@
-﻿using HutechStore.ViewModels.System.Users;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using HutechStore.ViewModels.Common;
+using HutechStore.ViewModels.System.Users;
 using System.Threading.Tasks;
 
 namespace HutechStore.Application.System.Users
@@ -12,5 +9,7 @@ namespace HutechStore.Application.System.Users
         Task<string> Authencate(LoginRequest request);
 
         Task<bool> Register(RegisterRequest request);
+
+        Task<PagedResult<UserVm>> GetUsersPaging(GetUserPagingRequest request);
     }
 }

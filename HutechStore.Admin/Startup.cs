@@ -29,6 +29,17 @@ namespace HutechStore.Admin
         {
             services.AddHttpClient();
 
+            //begin::Microsoft.AspNetCore.Session
+            services.AddDistributedMemoryCache();
+
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
+            //end::Microsoft.AspNetCore.Session
+
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options =>
                 {
@@ -63,6 +74,10 @@ namespace HutechStore.Admin
             app.UseRouting();
 
             app.UseAuthorization();
+
+            //begin::Microsoft.AspNetCore.Session
+            app.UseSession();
+            //end::Microsoft.AspNetCore.Session
 
             app.UseEndpoints(endpoints =>
             {
