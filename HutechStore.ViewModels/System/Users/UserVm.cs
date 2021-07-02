@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HutechStore.ViewModels.System.Users
 {
@@ -19,5 +15,7 @@ namespace HutechStore.ViewModels.System.Users
         public string UserName { get; set; }
 
         public string Email { get; set; }
+
+        public DateTime Dob { get; set; }
     }
 }
