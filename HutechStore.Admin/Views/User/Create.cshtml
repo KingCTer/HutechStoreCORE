@@ -10,10 +10,12 @@
 }
 
 @section PageScripts{
-    <script src="~/assets/js/pages/custom/wizard/wizard-5.js"></script>
+    <script src="~/assets/js/pages/custom/wizard/wizard-5-edit.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 }
 
-<!--begin::Subheader-->
+<!--begin::Subheader-->s
 <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader">
     <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
         <!--begin::Info-->
@@ -21,15 +23,15 @@
             <!--begin::Page Heading-->
             <div class="d-flex align-items-baseline flex-wrap mr-5">
                 <!--begin::Page Title-->
-                <h5 class="text-dark font-weight-bold my-1 mr-5">Wizard 5</h5>
+                <h5 class="text-dark font-weight-bold my-1 mr-5">Thêm Người Dùng</h5>
                 <!--end::Page Title-->
                 <!--begin::Breadcrumb-->
                 <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
                     <li class="breadcrumb-item text-muted">
-                        <a href="" class="text-muted">Pages</a>
+                        <a href="" class="text-muted">Người dùng</a>
                     </li>
                     <li class="breadcrumb-item text-muted">
-                        <a href="" class="text-muted">Wizard 5</a>
+                        <a href="" class="text-muted">Thêm người dùng</a>
                     </li>
                 </ul>
                 <!--end::Breadcrumb-->
@@ -142,8 +144,8 @@
                                                 <span class="wizard-number">1</span>
                                             </div>
                                             <div class="wizard-label">
-                                                <h3 class="wizard-title">Account Settings</h3>
-                                                <div class="wizard-desc">Setup Your Account Details</div>
+                                                <h3 class="wizard-title">Thiết Lập Tài Khoản</h3>
+                                                <div class="wizard-desc">Setup User Account Details</div>
                                             </div>
                                         </div>
                                     </div>
@@ -156,8 +158,8 @@
                                                 <span class="wizard-number">2</span>
                                             </div>
                                             <div class="wizard-label">
-                                                <h3 class="wizard-title">Address Details</h3>
-                                                <div class="wizard-desc">Setup Residence Address</div>
+                                                <h3 class="wizard-title">Thiết Lập Người Dùng</h3>
+                                                <div class="wizard-desc">Setup User Information Details</div>
                                             </div>
                                         </div>
                                     </div>
@@ -170,7 +172,7 @@
                                                 <span class="wizard-number">3</span>
                                             </div>
                                             <div class="wizard-label">
-                                                <h3 class="wizard-title">Completed!</h3>
+                                                <h3 class="wizard-title">Hoàn Thành!</h3>
                                                 <div class="wizard-desc">Review and Submit</div>
                                             </div>
                                         </div>
@@ -191,8 +193,8 @@
                     <div class="wizard-content bg-gray-100 d-flex flex-column flex-row-fluid py-15 px-5 px-lg-10">
                         <!--begin::Title-->
                         <div class="text-right mb-lg-30 mb-15 mr-xxl-10">
-                            <span class="font-weight-bold text-muted font-size-h5">Having issues?</span>
-                            <a href="javascript:;" class="font-weight-bolder text-primary font-size-h4" id="kt_login_signup">Get Help</a>
+                            <span class="font-weight-bold text-muted font-size-h5">Có vấn đề?</span>
+                            <a href="javascript:;" class="font-weight-bolder text-primary font-size-h4" id="kt_login_signup">Trợ Giúp</a>
                         </div>
                         <!--end::Title-->
                         <!--begin::Form-->
@@ -202,45 +204,28 @@
                                 <div class="pb-5" data-wizard-type="step-content" data-wizard-state="current">
                                     <!--begin::Title-->
                                     <div class="pb-10 pb-lg-15">
-                                        <h3 class="font-weight-bolder text-dark font-size-h2">Create Account</h3>
-                                        <div class="text-muted font-weight-bold font-size-h5">
-                                            Already have an Account ?
-                                            <a href="custom/pages/login/login-3/signin.html" class="text-primary font-weight-bolder">Sign In</a>
-                                        </div>
+                                        <h3 class="font-weight-bolder text-dark font-size-h2">Tạo Tài Khoản Mới</h3>
+                                        <div asp-validation-summary="All" class="text-danger"></div>
                                     </div>
                                     <!--begin::Title-->
                                     <!--begin::Form Group-->
                                     <div class="form-group">
                                         <label asp-for="UserName" class="font-size-h6 font-weight-bolder text-dark"></label>
-                                        <input asp-for="UserName" type="text" class="form-control h-auto p-5 border-0 rounded-lg font-size-h6" placeholder="Tên đăng nhập" />
+                                        <input name="UserName" asp-for="UserName" type="text" class="form-control h-auto p-5 border-0 rounded-lg font-size-h6" placeholder="Username" />
                                         <span asp-validation-for="UserName" class="text-danger"></span>
                                     </div>
                                     <!--end::Form Group-->
                                     <!--begin::Form Group-->
                                     <div class="form-group">
-                                        <label asp-for="FirstName" class="font-size-h6 font-weight-bolder text-dark"></label>
-                                        <input asp-for="FirstName" type="text" class="form-control h-auto p-5 border-0 rounded-lg font-size-h6" placeholder="First Name" />
-                                        <span asp-validation-for="FirstName" class="text-danger"></span>
-                                    </div>
-                                    <!--end::Form Group-->
-                                    <!--begin::Form Group-->
-                                    <div class="form-group">
-                                        <label asp-for="LastName" class="font-size-h6 font-weight-bolder text-dark"></label>
-                                        <input asp-for="LastName" type="text" class="form-control h-auto p-6 border-0 rounded-lg font-size-h6" placeholder="Last Name" />
-                                        <span asp-validation-for="LastName" class="text-danger"></span>
-                                    </div>
-                                    <!--end::Form Group-->
-                                    <!--begin::Form Group-->
-                                    <div class="form-group">
                                         <label asp-for="Password" class="font-size-h6 font-weight-bolder text-dark"></label>
-                                        <input asp-for="Password" type="password" class="form-control h-auto p-6 border-0 rounded-lg font-size-h6" placeholder="Mật khẩu" />
+                                        <input name="Password" asp-for="Password" type="password" class="form-control h-auto p-6 border-0 rounded-lg font-size-h6" placeholder="Password" />
                                         <span asp-validation-for="Password" class="text-danger"></span>
                                     </div>
                                     <!--end::Form Group-->
                                     <!--begin::Form Group-->
                                     <div class="form-group">
                                         <label asp-for="ConfirmPassword" class="font-size-h6 font-weight-bolder text-dark"></label>
-                                        <input asp-for="ConfirmPassword" type="password" class="form-control h-auto p-6 border-0 rounded-lg font-size-h6" placeholder="Xác nhận mật khẩu" />
+                                        <input name="ConfirmPassword" asp-for="ConfirmPassword" type="password" class="form-control h-auto p-6 border-0 rounded-lg font-size-h6" placeholder="Confirm Password" />
                                         <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                                     </div>
                                     <!--end::Form Group-->
@@ -250,17 +235,27 @@
                                 <div class="pb-5" data-wizard-type="step-content">
                                     <!--begin::Title-->
                                     <div class="pb-10 pb-lg-15">
-                                        <h3 class="font-weight-bolder text-dark font-size-h2">Address Details</h3>
-                                        <div class="text-muted font-weight-bold font-size-h4">
-                                            Have a Different Address ?
-                                            <a href="#" class="text-primary font-weight-bolder">Add Address</a>
-                                        </div>
+                                        <h3 class="font-weight-bolder text-dark font-size-h2">Thông Tin Người Dùng</h3>
                                     </div>
                                     <!--end::Title-->
                                     <!--begin::Form Group-->
                                     <div class="form-group">
+                                        <label asp-for="FirstName" class="font-size-h6 font-weight-bolder text-dark"></label>
+                                        <input name="FirstName" asp-for="FirstName" type="text" class="form-control h-auto p-5 border-0 rounded-lg font-size-h6" placeholder="First Name" />
+                                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                                    </div>
+                                    <!--end::Form Group-->
+                                    <!--begin::Form Group-->
+                                    <div class="form-group">
+                                        <label asp-for="LastName" class="font-size-h6 font-weight-bolder text-dark"></label>
+                                        <input name="LastName" asp-for="LastName" type="text" class="form-control h-auto p-6 border-0 rounded-lg font-size-h6" placeholder="Last Name" />
+                                        <span asp-validation-for="LastName" class="text-danger"></span>
+                                    </div>
+                                    <!--end::Form Group-->
+                                    <!--begin::Form Group-->
+                                    <div class="form-group">
                                         <label asp-for="Email" class="font-size-h6 font-weight-bolder text-dark"></label>
-                                        <input asp-for="Email" type="email" class="form-control h-auto p-5 border-0 rounded-lg font-size-h6" placeholder="Email"/>
+                                        <input name="Email" asp-for="Email" type="email" class="form-control h-auto p-5 border-0 rounded-lg font-size-h6" placeholder="Email" />
                                         <span asp-validation-for="Email" class="text-danger"></span>
 
                                     </div>
@@ -271,7 +266,7 @@
                                             <!--end::Form Group-->
                                             <div class="form-group">
                                                 <label asp-for="PhoneNumber" class="font-size-h6 font-weight-bolder text-dark"></label>
-                                                <input asp-for="PhoneNumber" type="number" class="form-control h-auto p-5 border-0 rounded-lg font-size-h6" placeholder="Số điện thoại" />
+                                                <input name="PhoneNumber" asp-for="PhoneNumber" type="number" class="form-control h-auto p-5 border-0 rounded-lg font-size-h6" placeholder="Số điện thoại" />
                                                 <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                                             </div>
                                             <!--begin::Form Group-->
@@ -280,7 +275,7 @@
                                             <!--end::Form Group-->
                                             <div class="form-group">
                                                 <label asp-for="Dob" class="font-size-h6 font-weight-bolder text-dark"></label>
-                                                <input asp-for="Dob" type="date" class="form-control h-auto p-5 border-0 rounded-lg font-size-h6" placeholder="Ngày Sinh" />
+                                                <input name="Dob" asp-for="Dob" type="date" class="form-control h-auto p-5 border-0 rounded-lg font-size-h6" placeholder="Ngày Sinh" />
                                                 <span asp-validation-for="Dob" class="text-danger"></span>
                                             </div>
                                             <!--end::Form Group-->
@@ -293,31 +288,24 @@
                                 <div class="pb-5" data-wizard-type="step-content">
                                     <!--begin::Title-->
                                     <div class="pb-10 pb-lg-15">
-                                        <h3 class="font-weight-bolder text-dark font-size-h2">Complete</h3>
-                                        <div class="text-muted font-weight-bold font-size-h4">Complete Your Signup And Become A Member!</div>
+                                        <h3 class="font-weight-bolder text-dark font-size-h2">Hoàn Thành</h3>
+                                        <div class="text-muted font-weight-bold font-size-h4">Hoàn Thành Đăng Ký Và Thêm Vào CSDL</div>
                                     </div>
                                     <!--end::Title-->
                                     <!--begin::Section-->
-                                    <h4 class="font-weight-bolder mb-3">Accoun Settings:</h4>
+                                    <h4 class="font-weight-bolder mb-3">Thong Tin Tài Khoản:</h4>
                                     <div class="text-dark-50 font-weight-bold line-height-lg mb-8">
-                                        <div>Nick Stone</div>
-                                        <div>+12233434-34</div>
-                                        <div>nick.stone@gmail.com</div>
+                                        <div id="reviewUserName">Tên đăng nhập : </div>
+                                        <div id="reviewPassword">Mật khẩu : </div>
                                     </div>
                                     <!--end::Section-->
                                     <!--begin::Section-->
-                                    <h4 class="font-weight-bolder mb-3">Address Details:</h4>
+                                    <h4 class="font-weight-bolder mb-3">Thông Tin Người Dùng:</h4>
                                     <div class="text-dark-50 font-weight-bold line-height-lg mb-8">
-                                        <div>Address Line 1</div>
-                                        <div>Address Line 2</div>
-                                        <div>Melbourne 3000, VIC, Australia</div>
-                                    </div>
-                                    <!--end::Section-->
-                                    <!--begin::Section-->
-                                    <h4 class="font-weight-bolder mb-3">Support Channels:</h4>
-                                    <div class="text-dark-50 font-weight-bold line-height-lg mb-8">
-                                        <div>Overnight Delivery with Regular Packaging</div>
-                                        <div>Preferred Morning (8:00AM - 11:00AM) Delivery</div>
+                                        <div id="reviewFullName">Họ và tên : </div>
+                                        <div id="reviewEmail">Email : </div>
+                                        <div id="reviewPhoneNumber">Số điện thoại : </div>
+                                        <div id="reviewDob">Ngày sinh : </div>
                                     </div>
                                     <!--end::Section-->
                                 </div>
@@ -336,12 +324,12 @@
                                                     </g>
                                                 </svg>
                                                 <!--end::Svg Icon-->
-                                            </span>Previous
+                                            </span>Quay Lại
                                         </button>
                                     </div>
                                     <div>
                                         <button type="submit" class="btn btn-primary font-weight-bolder font-size-h6 pl-5 pr-8 py-4 my-3" data-wizard-type="action-submit">
-                                            Submit
+                                            Thêm Người Dùng
                                             <span class="svg-icon svg-icon-md ml-2">
                                                 <!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Right-2.svg-->
                                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -355,7 +343,7 @@
                                             </span>
                                         </button>
                                         <button type="button" class="btn btn-primary font-weight-bolder font-size-h6 pl-8 pr-4 py-4 my-3" data-wizard-type="action-next">
-                                            Next Step
+                                            Bước Tiếp Theo
                                             <span class="svg-icon svg-icon-md ml-1">
                                                 <!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Right-2.svg-->
                                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">

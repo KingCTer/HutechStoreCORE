@@ -47,7 +47,7 @@ namespace HutechStore.Admin.Controllers
         public async Task<IActionResult> Create(RegisterRequest request)
         {
             if (!ModelState.IsValid)
-                return View();
+                return View(request);
 
             var result = await _userApiClient.RegisterUser(request);
             if (result)
@@ -64,7 +64,7 @@ namespace HutechStore.Admin.Controllers
             //Session::Remove Token
             HttpContext.Session.Remove("Token");
 
-            return RedirectToAction("Login", "User");
+            return RedirectToAction("Index", "Login");
         }
     }
 }

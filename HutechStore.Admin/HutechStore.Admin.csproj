@@ -5,6 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\assets\js\pages\custom\wizard\wizard-5 - Copy.min.js" />
+    <Content Remove="wwwroot\assets\js\pages\custom\wizard\wizard-5-edit.js" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="wwwroot\assets\js\pages\crud\datatables\advanced\column-rendering.js" />
     <None Include="wwwroot\assets\js\pages\crud\datatables\advanced\column-rendering.min.js" />
     <None Include="wwwroot\assets\js\pages\crud\datatables\advanced\column-visibility.js" />
@@ -215,6 +220,8 @@
     <None Include="wwwroot\assets\js\pages\custom\wizard\wizard-3.min.js" />
     <None Include="wwwroot\assets\js\pages\custom\wizard\wizard-4.js" />
     <None Include="wwwroot\assets\js\pages\custom\wizard\wizard-4.min.js" />
+    <None Include="wwwroot\assets\js\pages\custom\wizard\wizard-5-edit.js" />
+    <None Include="wwwroot\assets\js\pages\custom\wizard\wizard-5-edit.min.js" />
     <None Include="wwwroot\assets\js\pages\custom\wizard\wizard-5.js" />
     <None Include="wwwroot\assets\js\pages\custom\wizard\wizard-5.min.js" />
     <None Include="wwwroot\assets\js\pages\custom\wizard\wizard-6.js" />

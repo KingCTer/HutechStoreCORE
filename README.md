@@ -7,3 +7,5 @@
 - Microsoft.EntityFrameworkCore.Design
 - Microsoft.EntityFrameworkCore.Tools
 - Microsoft.AspNetCore.Session
+## Extensive Library
+- formvalidation.io (js FormValidation)
