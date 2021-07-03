@@ -31,6 +31,8 @@ namespace HutechStore.Admin.Controllers
                 PageSize = pageSize
             };
             var data = await _userApiClient.GetUsersPagings(request);
+            ViewBag.Keyword = keyword;
+            ViewBag.PageSize = pageSize;
             return View(data.ResultObj);
         }
 

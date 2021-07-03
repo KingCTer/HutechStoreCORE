@@ -24,9 +24,9 @@
             <!--begin::Search Form-->
             <div class="d-flex align-items-center" id="kt_subheader_search">
                 <span class="text-dark-50 font-weight-bold" id="kt_subheader_total">@Model.TotalRecords Total</span>
-                <form class="ml-5">
+                <form asp-action="Index" method="get" class="ml-5">
                     <div class="input-group input-group-sm input-group-solid" style="max-width: 175px">
-                        <input type="text" class="form-control" id="kt_subheader_search_form" placeholder="Search..." />
+                        <input name="keyword" type="text" class="form-control" id="kt_subheader_search_form" placeholder="Tìm kiếm..." />
                         <div class="input-group-append">
                             <span class="input-group-text">
                                 <span class="svg-icon">
