@@ -46,7 +46,7 @@ namespace HutechStore.BackendApi.Controllers
             {
                 return BadRequest(result);
             }
-            return Ok();
+            return Ok(request);
         }
 
         //PUT: http://localhost/api/users/id

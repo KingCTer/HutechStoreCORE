@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace HutechStore.ViewModels.Common
 {
-    public class PagedResult<T>
+    public class PagedResult<T> : PagedResultBase
     {
         public List<T> Items { get; set; }
-        public int TotalRecord { get; set; }
     }
 }
