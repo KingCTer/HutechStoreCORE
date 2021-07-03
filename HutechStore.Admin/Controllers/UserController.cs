@@ -79,7 +79,7 @@ namespace HutechStore.Admin.Controllers
         public async Task<IActionResult> Edit(UserUpdateRequest request)
         {
             if (!ModelState.IsValid)
-                return View();
+                return View(request);
 
             var result = await _userApiClient.UpdateUser(request.Id, request);
             if (result.IsSuccessed)
