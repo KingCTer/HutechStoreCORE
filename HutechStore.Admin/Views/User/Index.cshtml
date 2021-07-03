@@ -8,6 +8,12 @@
 
 @section PageScripts{
     @*<script src="~/assets/js/pages/custom/user/list-datatable.js"></script>*@
+    <script src="~/assets/js/customization/bootstrap-notify.js"></script>
+    <script>
+        jQuery(document).ready(function () {
+            pushBootstrapNotify("Test");
+        });
+    </script>
 }
 
 <!--begin::Subheader-->
@@ -315,7 +321,7 @@
                             @{
                                 Random rand = new Random();
                                 var states = new List<String>()
-                                                                        {
+                                                                                            {
                                     "success",
                                     "primary",
                                     "danger",
@@ -331,7 +337,7 @@
                             {
                                 var state = states[rand.Next(0, 7)];
                                 countUser++;
-                                var numericalOrder = (Model.PageIndex - 1)*Model.PageSize + countUser;
+                                var numericalOrder = (Model.PageIndex - 1) * Model.PageSize + countUser;
 
                                 <tr class="datatable-row" style="left: 0px;">
                                     <td class="datatable-cell">
