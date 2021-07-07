@@ -8,12 +8,16 @@
 
 @section PageScripts{
     @*<script src="~/assets/js/pages/custom/user/list-datatable.js"></script>*@
-    <script src="~/assets/js/customization/bootstrap-notify.js"></script>
-    <script>
-        jQuery(document).ready(function () {
-            pushBootstrapNotify("Test");
-        });
-    </script>
+    <script src="~/assets/js/customization/bootstrap-notify.js?v=1"></script>
+    @if (ViewBag.ResultMsg != null)
+    {
+        <script id="scriptPushNotify">
+            jQuery(document).ready(function () {
+                pushBootstrapNotify("@ViewBag.ResultMsg", "@ViewBag.ResultState", "@ViewBag.ResultTitle");
+            });
+            $("#scriptPushNotify").remove();
+        </script>
+    }
 }
 
 <!--begin::Subheader-->
@@ -321,7 +325,7 @@
                             @{
                                 Random rand = new Random();
                                 var states = new List<String>()
-                                                                                            {
+                                                                                                                                                                            {
                                     "success",
                                     "primary",
                                     "danger",

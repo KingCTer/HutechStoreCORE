@@ -1711,6 +1711,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\HutechStore.Utilities\HutechStore.Utilities.csproj" />
     <ProjectReference Include="..\HutechStore.ViewModels\HutechStore.ViewModels.csproj" />
   </ItemGroup>
 

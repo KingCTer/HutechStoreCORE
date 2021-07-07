@@ -1,4 +1,5 @@
 ﻿using HutechStore.Admin.Services;
+using HutechStore.Utilities.Constants;
 using HutechStore.ViewModels.System.Users;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -31,6 +32,12 @@ namespace HutechStore.Admin.Controllers
                 PageSize = pageSize
             };
             var data = await _userApiClient.GetUsersPagings(request);
+            
+            if (TempData["resultState"] != null)
+            {
+                ViewBag.ResultState = TempData["resultState"];
+                ViewBag.ResultMsg = TempData["resultMsg"];
+            }
             ViewBag.Keyword = keyword;
             ViewBag.PageSize = pageSize;
             return View(data.ResultObj);
@@ -50,7 +57,12 @@ namespace HutechStore.Admin.Controllers
 
             var result = await _userApiClient.RegisterUser(request);
             if (result.IsSuccessed)
+            {
+                TempData["resultState"] = TempDataConstants.ResultState.Success;
+                TempData["resultMsg"] = "Thêm mới người dùng thành công";
                 return RedirectToAction("Index");
+            }
+                
 
             ModelState.AddModelError("", result.Message);
             return View(request);
@@ -92,7 +104,11 @@ namespace HutechStore.Admin.Controllers
 
             var result = await _userApiClient.UpdateUser(request.Id, request);
             if (result.IsSuccessed)
+            {
+                TempData["resultState"] = TempDataConstants.ResultState.Success;
+                TempData["resultMsg"] = "Chỉnh sửa người dùng thành công";
                 return RedirectToAction("Index");
+            }    
 
             ModelState.AddModelError("", result.Message);
             return View(request);
@@ -115,7 +131,11 @@ namespace HutechStore.Admin.Controllers
 
             var result = await _userApiClient.Delete(request.Id);
             if (result.IsSuccessed)
+            {
+                TempData["resultState"] = TempDataConstants.ResultState.Success;
+                TempData["resultMsg"] = "Xoá người dùng thành công";
                 return RedirectToAction("Index");
+            }
 
             ModelState.AddModelError("", result.Message);
             return View(request);

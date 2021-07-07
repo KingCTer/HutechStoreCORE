@@ -27,10 +27,10 @@ const animates = {
 // basic demo
 function pushBootstrapNotify(
     message,
-    title,
-    icon,
-    url,
     state = states.success,
+    title = "",
+    icon = "",
+    url = "",
     allowDismiss = true,
     newestOnTop = true,
     pauseOnHover = false,
