@@ -1,0 +1,62 @@
+﻿@model NavigationViewModel
+
+<div class="dropdown">
+    <!--begin::Toggle-->
+    <div class="topbar-item" data-toggle="dropdown" data-offset="10px,0px">
+        <div class="btn btn-icon btn-clean btn-dropdown btn-lg mr-1">
+            @switch (Model.CurrentLanguageId)
+            {
+                case "vi-VN":
+                    <img class="h-20px w-20px rounded-sm" src="~/assets/media/svg/flags/220-vietnam.svg" alt="" />
+                    break;
+
+                case "en-US":
+                    <img class="h-20px w-20px rounded-sm" src="~/assets/media/svg/flags/226-united-states.svg" alt="" />
+                    break;
+
+                default:
+                    break;
+            }
+        </div>
+    </div>
+    <!--end::Toggle-->
+    <!--begin::Dropdown-->
+    <form id="frmChangeLanguage" asp-controller="Home" asp-action="Language" method="post">
+        <input asp-for="CurrentLanguageId" type="hidden" id="currenLanguage" name="CurrentLanguageId" />
+        <div class="dropdown-menu p-0 m-0 dropdown-menu-anim-up dropdown-menu-sm dropdown-menu-right">
+            <!--begin::Nav-->
+            <ul class="navi navi-hover py-4">
+                <!--begin::Item-->
+                @foreach (var item in Model.Languages)
+                {
+                    <li class="navi-item">
+                        <a class="navi-link selectLanguage">
+                            <span class="symbol symbol-20 mr-3">
+                                @switch (item.Id)
+                                {
+                                    case "vi-VN":
+                                        <img class="h-20px w-20px rounded-sm" src="~/assets/media/svg/flags/220-vietnam.svg" alt="" />
+                                        break;
+
+                                    case "en-US":
+                                        <img class="h-20px w-20px rounded-sm" src="~/assets/media/svg/flags/226-united-states.svg" alt="" />
+                                        break;
+
+                                    default:
+                                        break;
+                                }
+                            </span>
+                            <span class="navi-text">@item.Name</span>
+                            <input type="hidden" value="@item.Id" />
+                        </a>
+                    </li>
+
+                }
+                <!--end::Item-->
+            </ul>
+            <!--end::Nav-->
+        </div>
+    </form>
+
+    <!--end::Dropdown-->
+</div>
