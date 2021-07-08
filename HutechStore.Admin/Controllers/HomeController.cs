@@ -1,12 +1,9 @@
 ﻿using HutechStore.Admin.Models;
-using Microsoft.AspNetCore.Authorization;
+using HutechStore.Utilities.Constants;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace HutechStore.Admin.Controllers
 {
@@ -35,6 +32,14 @@ namespace HutechStore.Admin.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        [HttpPost]
+        public IActionResult Language(NavigationViewModel viewModel)
+        {
+            HttpContext.Session.SetString(SystemConstants.AppSettings.DefaultLanguageId, viewModel.CurrentLanguageId);
+
+            return RedirectToAction("Index");
         }
     }
 }
