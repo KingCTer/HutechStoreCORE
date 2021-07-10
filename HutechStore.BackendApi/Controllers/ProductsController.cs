@@ -18,17 +18,15 @@ namespace HutechStore.BackendApi.Controllers
             _productService = productService;
         }
 
-        //http://localhost:port/Products?pageIndex=1&pageSize=10&CategoryId=
-        [HttpGet("{languageId}")]
+        [HttpGet("paging")]
         [Authorize]
-        public async Task<IActionResult> GetAllPaging(string languageId, [FromQuery] GetPublicProductPagingRequest request)
+        public async Task<IActionResult> GetAllPaging([FromQuery] GetManageProductPagingRequest request)
         {
-            var products = await _productService.GetAllByCategoryId(languageId, request);
+            var products = await _productService.GetAllPaging(request);
 
             return Ok(products);
         }
 
-        //http://localhost:port/Products/1/vi-VN
         [HttpGet("{productId}/{languageId}")]
         public async Task<IActionResult> GetById(int productId, string languageId)
         {
