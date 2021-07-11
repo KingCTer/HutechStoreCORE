@@ -1,9 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace HutechStore.ViewModels.Catalog.Products
 {
@@ -13,7 +9,9 @@ namespace HutechStore.ViewModels.Catalog.Products
         public decimal OriginalPrice { set; get; }
         public int Stock { set; get; }
 
+        [Required(ErrorMessage = "Bạn phải nhập tên sản phẩm")]
         public string Name { set; get; }
+
         public string Description { set; get; }
         public string Details { set; get; }
         public string SeoDescription { set; get; }
@@ -22,6 +20,5 @@ namespace HutechStore.ViewModels.Catalog.Products
         public string LanguageId { set; get; }
 
         public IFormFile ThumbnailImage { get; set; }
-
     }
 }
