@@ -1,4 +1,5 @@
 using FluentValidation.AspNetCore;
+using HutechStore.Application.Catalog.Categories;
 using HutechStore.Application.Catalog.Products;
 using HutechStore.Application.Common;
 using HutechStore.Application.System.Languages;
@@ -60,6 +61,7 @@ namespace HutechStore.BackendApi
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IRoleService, RoleService>();
             services.AddTransient<ILanguageService, LanguageService>();
+            services.AddTransient<ICategoryService, CategoryService>();
 
             //Main
             services.AddControllers()
