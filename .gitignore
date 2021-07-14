@@ -363,3 +363,5 @@ MigrationBackup/
 FodyWeavers.xsd
 /HutechStore.BackendApi/wwwroot/user-content
 /HutechStore.Admin/wwwroot/assets/media/demos
+/HutechStore.Web/wwwroot/assets/media/books
+/HutechStore.Web/wwwroot/assets/media/demos
