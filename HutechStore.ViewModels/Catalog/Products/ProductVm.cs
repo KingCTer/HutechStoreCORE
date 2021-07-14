@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HutechStore.ViewModels.Catalog.Products
 {
@@ -22,5 +19,7 @@ namespace HutechStore.ViewModels.Catalog.Products
         public string SeoTitle { set; get; }
         public string SeoAlias { get; set; }
         public string LanguageId { set; get; }
+
+        public List<string> Categories { get; set; } = new List<string>();
     }
 }

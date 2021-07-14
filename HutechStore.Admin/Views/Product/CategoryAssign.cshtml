@@ -1,7 +1,7 @@
-﻿@model HutechStore.ViewModels.System.Users.RoleAssignRequest
+﻿@model HutechStore.ViewModels.Catalog.Products.CategoryAssignRequest
 
 @{
-    ViewData["Title"] = "RoleAssign";
+    ViewData["Title"] = "Gán danh mục";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -28,23 +28,21 @@
         <!--begin::Card-->
         <div class="card card-custom">
             <div class="card-body">
-                <h1>RoleAssign</h1>
-
-                <h4>RoleAssignRequest</h4>
+                <h1>Gán danh mục</h1>
                 <hr />
                 <div class="row">
                     <div class="col-md-4">
-                        <form asp-action="RoleAssign">
+                        <form asp-action="CategoryAssign">
                             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                             <input type="hidden" asp-for="Id" />
-                            @for (var i = 0; i < Model.Roles.Count; i++)
+                            @for (var i = 0; i < Model.Categories.Count; i++)
                             {
                                 <div class="form-group">
                                     <label>
-                                        @Model.Roles[i].Name
-                                        <input type="checkbox" asp-for="Roles[i].Selected" />
-                                        <input type="hidden" asp-for="Roles[i].Id" />
-                                        <input type="hidden" asp-for="Roles[i].Name" />
+                                        @Model.Categories[i].Name
+                                        <input type="checkbox" asp-for="Categories[i].Selected" />
+                                        <input type="hidden" asp-for="Categories[i].Id" />
+                                        <input type="hidden" asp-for="Categories[i].Name" />
                                     </label>
                                 </div>
                             }
@@ -56,10 +54,8 @@
                 </div>
 
                 <div>
-                    <a asp-action="Index">Back to List</a>
+                    <a asp-action="Index">Trở về danh sách</a>
                 </div>
-            </div>
-
             </div>
 
         </div>
@@ -68,5 +64,6 @@
     <!--end::Container-->
 </div>
 <!--end::Entry-->
+
 
 
