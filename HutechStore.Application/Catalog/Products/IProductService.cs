@@ -37,5 +37,7 @@ namespace HutechStore.Application.Catalog.Products
         Task<PagedResult<ProductVm>> GetAllByCategoryId(string languageId, GetPublicProductPagingRequest request);
 
         Task<ApiResult<bool>> CategoryAssign(int id, CategoryAssignRequest request);
+
+        Task<List<ProductVm>> GetFeaturedProducts(string languageId, int take);
     }
 }
