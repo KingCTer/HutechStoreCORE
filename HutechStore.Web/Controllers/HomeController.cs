@@ -2,6 +2,7 @@
 using HutechStore.Utilities.Constants;
 using HutechStore.Web.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -16,13 +17,17 @@ namespace HutechStore.Web.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IProductApiClient _productApiClient;
+        private readonly IConfiguration _configuration;
 
         public HomeController(
             ILogger<HomeController> logger,
-            IProductApiClient productApiClient)
+            IProductApiClient productApiClient,
+            IConfiguration configuration
+        )
         {
             _logger = logger;
             _productApiClient = productApiClient;
+            _configuration = configuration;
         }
 
         public async Task<IActionResult> Index()
@@ -30,9 +35,11 @@ namespace HutechStore.Web.Controllers
             var culture = CultureInfo.CurrentCulture.Name;
             var viewModel = new HomeViewModel
             {
-                FeaturedProducts = await _productApiClient.GetFeaturedProducts(culture, SystemConstants.ProductSettings.NumberOfFeaturedProducts)
+                FeaturedProducts = await _productApiClient.GetFeaturedProducts(culture, SystemConstants.ProductSettings.NumberOfFeaturedProducts),
+                LatestProducts = await _productApiClient.GetLatestProducts(culture, SystemConstants.ProductSettings.NumberOfLatestProducts)
             };
 
+            ViewBag.BaseAddress = _configuration[SystemConstants.AppSettings.BaseAddress];
             return View(viewModel);
         }
 
