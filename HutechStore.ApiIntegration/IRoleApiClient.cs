@@ -3,7 +3,7 @@ using HutechStore.ViewModels.System.Roles;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace HutechStore.Admin.Services
+namespace HutechStore.ApiIntegration
 {
     public interface IRoleApiClient
     {

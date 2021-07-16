@@ -1,4 +1,5 @@
-﻿using HutechStore.ViewModels.Common;
+﻿using HutechStore.ApiIntegration;
+using HutechStore.ViewModels.Common;
 using HutechStore.ViewModels.System.Languages;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
@@ -6,7 +7,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace HutechStore.Admin.Services
+namespace HutechStore.ApiIntegration
 {
     public class LanguageApiClient : BaseApiClient, ILanguageApiClient
     {

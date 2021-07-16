@@ -1,4 +1,5 @@
-﻿using HutechStore.Utilities.Constants;
+﻿using HutechStore.ApiIntegration;
+using HutechStore.Utilities.Constants;
 using HutechStore.ViewModels.Catalog.Products;
 using HutechStore.ViewModels.Common;
 using Microsoft.AspNetCore.Http;
@@ -11,7 +12,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HutechStore.Admin.Services
+namespace HutechStore.ApiIntegration
 {
     public class ProductApiClient : BaseApiClient, IProductApiClient
     {

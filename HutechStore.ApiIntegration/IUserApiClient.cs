@@ -3,7 +3,7 @@ using HutechStore.ViewModels.System.Users;
 using System;
 using System.Threading.Tasks;
 
-namespace HutechStore.Admin.Services
+namespace HutechStore.ApiIntegration
 {
     public interface IUserApiClient
     {

@@ -1,11 +1,12 @@
-﻿using HutechStore.ViewModels.Catalog.Categories;
+﻿using HutechStore.ApiIntegration;
+using HutechStore.ViewModels.Catalog.Categories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace HutechStore.Admin.Services
+namespace HutechStore.ApiIntegration
 {
     public class CategoryApiClient : BaseApiClient, ICategoryApiClient
     {

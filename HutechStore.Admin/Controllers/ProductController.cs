@@ -1,4 +1,4 @@
-﻿using HutechStore.Admin.Services;
+﻿using HutechStore.ApiIntegration;
 using HutechStore.Utilities.Constants;
 using HutechStore.ViewModels.Catalog.Products;
 using HutechStore.ViewModels.Common;

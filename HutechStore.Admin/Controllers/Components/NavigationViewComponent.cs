@@ -1,5 +1,5 @@
 ﻿using HutechStore.Admin.Models;
-using HutechStore.Admin.Services;
+using HutechStore.ApiIntegration;
 using HutechStore.Utilities.Constants;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

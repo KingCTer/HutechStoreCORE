@@ -1,5 +1,5 @@
 using FluentValidation.AspNetCore;
-using HutechStore.Admin.Services;
+using HutechStore.ApiIntegration;
 using HutechStore.ViewModels.System.Users;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
