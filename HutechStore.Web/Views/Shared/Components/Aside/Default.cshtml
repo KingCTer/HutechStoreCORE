@@ -1,0 +1,51 @@
+﻿@model List<HutechStore.ViewModels.Catalog.Categories.CategoryVm>
+
+<div class="flex-column offcanvas-mobile w-300px w-xl-325px" id="kt_profile_aside">
+    <!--begin::Forms Widget 15-->
+    <div class="card card-custom gutter-b">
+        <!--begin::Body-->
+        <div class="card-body">
+            <!--begin::Categories-->
+            <div class="form-group mb-11">
+                <label class="font-size-h3 font-weight-bolder text-dark mb-7">Categories</label>
+                <!--begin::Checkbox list-->
+                <ul class="nav flex-column nav-pills">
+                    @{
+                        var parents = Model.Where(x => x.ParentId == null);
+                    }
+                    @for (int index = 0; index < parents.Count(); index++)
+                    {
+                        var parent = parents.ElementAt(index);
+                        var children = Model.Where(x => x.ParentId == parent.Id);
+
+                        if (children.Any())
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle font-size-lg text-dark-75 font-weight-bold" data-toggle="dropdown" href="/@ViewBag.CurrentCulture/danh-muc/@parent.Id" role="button" aria-haspopup="true" aria-expanded="false">
+                                    @parent.Name
+                                </a>
+                                <div class="dropdown-menu">
+                                    @foreach (var item in children)
+                                    {
+                                        <a class="dropdown-item font-size-lg text-dark-75 font-weight-bold" href="/@ViewBag.CurrentCulture/danh-muc/@item.Id">@item.Name</a>
+                                    }
+                                </div>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link font-size-lg text-dark-75 font-weight-bold" href="/@ViewBag.CurrentCulture/danh-muc/@parent.Id">@parent.Name</a>
+                            </li>
+                        }
+
+                    }
+                </ul>
+                <!--end::Checkbox list-->
+            </div>
+            <!--end::Categories-->
+        </div>
+        <!--end::Body-->
+    </div>
+    <!--end::Forms Widget 15-->
+</div>

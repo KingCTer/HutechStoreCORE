@@ -64,6 +64,22 @@ namespace HutechStore.Web
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
+                  name: "Product Category Vn",
+                  pattern: "{culture}/danh-muc/{id}", new
+                  {
+                      controller = "Product",
+                      action = "Category"
+                  });
+
+                endpoints.MapControllerRoute(
+                  name: "Product Detail Vn",
+                  pattern: "{culture}/san-pham/{id}", new
+                  {
+                      controller = "Product",
+                      action = "Detail"
+                  });
+
+                endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
