@@ -3,6 +3,7 @@
     ViewData["Title"] = "Home Page";
 }
 
+
 <!--begin::Entry-->
 <div class="d-flex flex-column-fluid">
     <!--begin::Container-->
@@ -300,6 +301,7 @@
                                 <!--begin::Product-->
                                 @foreach (var item in Model.FeaturedProducts)
                                 {
+                                    var url = $"/{ViewBag.CurrentCulture}/san-pham/{item.Id}";
                                     var thumbnailImage = ViewBag.BaseAddress + "/user-content/" + @item.ThumbnailImage;
 
                                     <div class="col-md-4 col-lg-12 col-xxl-4">
@@ -312,14 +314,14 @@
                                                         <img src="@thumbnailImage" alt="@item.Name" class="mw-100 w-200px" />
                                                     </div>
                                                     <div class="overlay-layer">
-                                                        <a href="#" class="btn font-weight-bolder btn-sm btn-primary mr-2">Xem</a>
+                                                        <a href="@url" class="btn font-weight-bolder btn-sm btn-primary mr-2">Xem</a>
                                                         <a href="#" class="btn font-weight-bolder btn-sm btn-light-primary">Mua</a>
                                                     </div>
                                                 </div>
                                                 <!--end::Image-->
                                                 <!--begin::Details-->
                                                 <div class="text-center mt-5 mb-md-0 mb-lg-5 mb-md-0 mb-lg-5 mb-lg-0 mb-5 d-flex flex-column">
-                                                    <a href="#" class="font-size-h5 font-weight-bolder text-dark-75 text-hover-primary mb-1">@item.Name</a>
+                                                    <a href="@url" class="font-size-h5 font-weight-bolder text-dark-75 text-hover-primary mb-1">@item.Name</a>
                                                     <span class="font-size-lg">@item.Price.ToString("0")đ</span>
                                                 </div>
                                                 <!--end::Details-->
@@ -337,92 +339,44 @@
                         <div class="mb-11">
                             <!--begin::Heading-->
                             <div class="d-flex justify-content-between align-items-center mb-7">
-                                <h2 class="font-weight-bolder text-dark font-size-h3 mb-0">Best Wines</h2>
+                                <h2 class="font-weight-bolder text-dark font-size-h3 mb-0">Sản Phẩm Mới Nhất</h2>
                                 <a href="#" class="btn btn-light-primary btn-sm font-weight-bolder">View All</a>
                             </div>
                             <!--end::Heading-->
                             <!--begin::Products-->
                             <div class="row">
                                 <!--begin::Product-->
-                                <div class="col-md-4 col-xxl-4 col-lg-12">
-                                    <!--begin::Card-->
-                                    <div class="card card-custom card-shadowless">
-                                        <div class="card-body p-0">
-                                            <!--begin::Image-->
-                                            <div class="overlay">
-                                                <div class="overlay-wrapper rounded bg-light text-center">
-                                                    <img src="~/assets/media/products/4.png" alt="" class="mw-100 w-200px" />
+                                @foreach (var item in Model.LatestProducts)
+                                {
+                                    var url = $"/{ViewBag.CurrentCulture}/product/{item.Id}";
+                                    var thumbnailImage = ViewBag.BaseAddress + "/user-content/" + @item.ThumbnailImage;
+
+                                    <div class="col-md-4 col-lg-12 col-xxl-4">
+                                        <!--begin::Card-->
+                                        <div class="card card-custom card-shadowless">
+                                            <div class="card-body p-0">
+                                                <!--begin::Image-->
+                                                <div class="overlay">
+                                                    <div class="overlay-wrapper rounded bg-light text-center">
+                                                        <img src="@thumbnailImage" alt="@item.Name" class="mw-100 w-200px" />
+                                                    </div>
+                                                    <div class="overlay-layer">
+                                                        <a href="@url" class="btn font-weight-bolder btn-sm btn-primary mr-2">Xem</a>
+                                                        <a href="#" class="btn font-weight-bolder btn-sm btn-light-primary">Mua</a>
+                                                    </div>
                                                 </div>
-                                                <div class="overlay-layer">
-                                                    <a href="#" class="btn font-weight-bolder btn-sm btn-primary mr-2">Quick View</a>
-                                                    <a href="#" class="btn font-weight-bolder btn-sm btn-light-primary">Purchase</a>
+                                                <!--end::Image-->
+                                                <!--begin::Details-->
+                                                <div class="text-center mt-5 mb-md-0 mb-lg-5 mb-md-0 mb-lg-5 mb-lg-0 mb-5 d-flex flex-column">
+                                                    <a href="@url" class="font-size-h5 font-weight-bolder text-dark-75 text-hover-primary mb-1">@item.Name</a>
+                                                    <span class="font-size-lg">@item.Price.ToString("0")đ</span>
                                                 </div>
+                                                <!--end::Details-->
                                             </div>
-                                            <!--end::Image-->
-                                            <!--begin::Details-->
-                                            <div class="text-center mt-5 mb-md-0 mb-lg-5 mb-md-0 mb-lg-5 mb-lg-0 mb-5 d-flex flex-column">
-                                                <a href="#" class="font-size-h5 font-weight-bolder text-dark-75 text-hover-primary mb-1">Jerry Kane</a>
-                                                <span class="font-size-lg">Outlines keep poorly thought</span>
-                                            </div>
-                                            <!--end::Details-->
                                         </div>
+                                        <!--end::Card-->
                                     </div>
-                                    <!--end::Card-->
-                                </div>
-                                <!--end::Product-->
-                                <!--begin::Product-->
-                                <div class="col-md-4 col-lg-12 col-xxl-4">
-                                    <!--begin::Card-->
-                                    <div class="card card-custom card-shadowless">
-                                        <div class="card-body p-0">
-                                            <!--begin::Image-->
-                                            <div class="overlay">
-                                                <div class="overlay-wrapper rounded bg-light text-center">
-                                                    <img src="~/assets/media/products/5.png" alt="" class="mw-100 w-200px" />
-                                                </div>
-                                                <div class="overlay-layer">
-                                                    <a href="#" class="btn font-weight-bolder btn-sm btn-primary mr-2">Quick View</a>
-                                                    <a href="#" class="btn font-weight-bolder btn-sm btn-light-primary">Purchase</a>
-                                                </div>
-                                            </div>
-                                            <!--end::Image-->
-                                            <!--begin::Details-->
-                                            <div class="text-center mt-5 mb-md-0 mb-lg-5 mb-md-0 mb-lg-5 mb-lg-0 mb-5 d-flex flex-column">
-                                                <a href="#" class="font-size-h5 font-weight-bolder text-dark-75 text-hover-primary mb-1">Shiraz</a>
-                                                <span class="font-size-lg">Outlines keep poorly thought</span>
-                                            </div>
-                                            <!--end::Details-->
-                                        </div>
-                                    </div>
-                                    <!--end::Card-->
-                                </div>
-                                <!--end::Product-->
-                                <!--begin::Product-->
-                                <div class="col-md-4 col-lg-12 col-xxl-4">
-                                    <!--begin::Card-->
-                                    <div class="card card-custom card-shadowless">
-                                        <div class="card-body p-0">
-                                            <!--begin::Image-->
-                                            <div class="overlay">
-                                                <div class="overlay-wrapper rounded bg-light text-center">
-                                                    <img src="~/assets/media/products/6.png" alt="" class="mw-100 w-200px" />
-                                                </div>
-                                                <div class="overlay-layer">
-                                                    <a href="#" class="btn font-weight-bolder btn-sm btn-primary mr-2">Quick View</a>
-                                                    <a href="#" class="btn font-weight-bolder btn-sm btn-light-primary">Purchase</a>
-                                                </div>
-                                            </div>
-                                            <!--end::Image-->
-                                            <!--begin::Details-->
-                                            <div class="text-center mt-5 mb-md-0 mb-lg-5 mb-md-0 mb-lg-5 mb-lg-0 mb-5 d-flex flex-column">
-                                                <a href="#" class="font-size-h5 font-weight-bolder text-dark-75 text-hover-primary mb-1">Chardonnay</a>
-                                                <span class="font-size-lg">Outlines keep poorly thought</span>
-                                            </div>
-                                            <!--end::Details-->
-                                        </div>
-                                    </div>
-                                    <!--end::Card-->
-                                </div>
+                                }
                                 <!--end::Product-->
                             </div>
                             <!--end::Products-->

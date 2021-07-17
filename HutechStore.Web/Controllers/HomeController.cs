@@ -40,6 +40,7 @@ namespace HutechStore.Web.Controllers
             };
 
             ViewBag.BaseAddress = _configuration[SystemConstants.AppSettings.BaseAddress];
+            ViewBag.CurrentCulture = culture;
             return View(viewModel);
         }
 
