@@ -1,8 +1,134 @@
-﻿
+﻿@model ProductDetailViewModel
 @{
     ViewData["Title"] = "Detail";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Detail</h1>
+@section PageScripts{
+    <script>
+        $('#kt_touchspin_1, #kt_touchspin_2_1').TouchSpin({
+            buttondown_class: 'btn btn-secondary',
+            buttonup_class: 'btn btn-secondary',
 
+            min: 0,
+            max: 100,
+            step: 1,
+            decimals: 0,
+            boostat: 5,
+            maxboostedstep: 10,
+        });
+    </script>
+}
+
+@{
+    var thumbnailImage = ViewBag.BaseAddress + "/user-content/" + Model.Product.ThumbnailImage;
+}
+
+<!--begin::Entry-->
+<div class="d-flex flex-column-fluid">
+    <!--begin::Container-->
+    <div class="container">
+        <!--begin::Page Layout-->
+        <div class="d-flex flex-row">
+            <!--begin::Aside-->
+            <!--end::Aside-->
+            <!--begin::Layout-->
+            <div class="flex-row-fluid ml-lg-8">
+                <!--begin::Card-->
+                <div class="card card-custom p-10">
+                    <div class="row">
+                        <div class="col-md-5 mb-5 mb-md-0">
+                            <div class="thumb-gallery-wrapper">
+                                <div class="thumb-gallery-detail owl-carousel owl-theme manual nav-inside nav-style-1 nav-dark mb-3">
+                                    <div>
+                                        <img alt="" class="img-fluid" src="@thumbnailImage" data-zoom-image="@thumbnailImage">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="summary entry-summary position-relative">
+                                <h1 class="mb-0 font-weight-bold text-7">@Model.Product.Name</h1>
+                                <div class="divider divider-small">
+                                    <hr class="bg-color-grey-scale-4">
+                                </div>
+                                <p class="price mb-3">
+                                    <span class="sale text-color-dark" style="font-size: 30px;font-weight: 600;">@Model.Product.Price.ToString("0")đ</span>
+                                </p>
+                                <p class="text-3-5 mb-3">@Model.Product.Description</p>
+                                <ul class="list list-unstyled text-2">
+                                    <li class="mb-0">Số lượng: <strong class="text-color-dark">@Model.Product.Stock</strong></li>
+                                </ul>
+                                <form class="form">
+                                    <hr>
+                                    <div class="form-group row">
+                                        <div class="col-lg-3 col-md-9 col-sm-12">
+                                            <input id="kt_touchspin_1" type="text" class="form-control" value="1" name="demo0" placeholder="Select time" />
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-dark btn-modern text-uppercase bg-color-hover-primary border-color-hover-primary">Add to cart</button>
+                                    <hr>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-4 mt-10">
+                        <div class="col">
+                            <div id="description" class="tabs tabs-simple tabs-simple-full-width-line tabs-product tabs-dark mb-2">
+                                <ul class="nav nav-tabs justify-content-start">
+                                    <li class="nav-item active"><a class="nav-link active font-weight-bold text-3 text-uppercase py-2 px-3" href="#productDescription" data-toggle="tab">Mô tả</a></li>
+                                    <li class="nav-item"><a class="nav-link font-weight-bold text-3 text-uppercase py-2 px-3" href="#productInfo" data-toggle="tab">Chi tiết sản phẩm</a></li>
+                                    <li class="nav-item"><a class="nav-link nav-link-reviews font-weight-bold text-3 text-uppercase py-2 px-3" href="#productReviews" data-toggle="tab">Đánh giá</a></li>
+                                </ul>
+                                <div class="tab-content p-0">
+                                    <div class="tab-pane px-0 py-3 active" id="productDescription">
+                                        @Html.Raw(Model.Product.Details)
+                                    </div>
+                                    <div class="tab-pane px-0 py-3" id="productInfo">
+                                        <table class="table table-striped m-0">
+                                            <tbody>
+                                                <tr>
+                                                    <th class="border-top-0">
+                                                        Size:
+                                                    </th>
+                                                    <td class="border-top-0">
+                                                        Unique
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>
+                                                        Colors
+                                                    </th>
+                                                    <td>
+                                                        Red, Blue
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>
+                                                        Material
+                                                    </th>
+                                                    <td>
+                                                        100% Leather
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="tab-pane px-0 py-3" id="productReviews">
+                                        Incomming
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--end::Card-->
+            </div>
+            <!--end::Layout-->
+        </div>
+        <!--end::Page Layout-->
+    </div>
+    <!--end::Container-->
+</div>
+<!--end::Entry-->

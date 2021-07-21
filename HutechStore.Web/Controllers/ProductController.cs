@@ -30,6 +30,9 @@ namespace HutechStore.Web.Controllers
         public async Task<IActionResult> Detail(int id, string culture)
         {
             var product = await _productApiClient.GetById(id, culture);
+
+            ViewBag.BaseAddress = _configuration[SystemConstants.AppSettings.BaseAddress];
+            ViewBag.CurrentCulture = CultureInfo.CurrentCulture.Name;
             return View(new ProductDetailViewModel()
             {
                 Product = product,
