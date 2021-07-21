@@ -1,4 +1,4 @@
-﻿@model HutechStore.ViewModels.System.Users.LoginRequest
+﻿@model HutechStore.ViewModels.System.Users.RegisterRequest
 @{
     Layout = null;
 }
@@ -8,8 +8,8 @@
 <!--begin::Head-->
 <head>
     <meta charset="utf-8" />
-    <title>Đăng Nhập | HutechStore</title>
-    <meta name="description" content="Đăng nhập vào HutechStore" />
+    <title>Đăng Ký | HutechStore</title>
+    <meta name="description" content="Đăng ký tài khoản hệ thống HutechStore" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <!--begin::Fonts-->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
@@ -32,7 +32,7 @@
     <!--begin::Main-->
     <div class="d-flex flex-column flex-root">
         <!--begin::Login-->
-        <div class="login login-1 login-signin-on d-flex flex-column flex-lg-row flex-column-fluid bg-white" id="kt_login">
+        <div class="login login-1 d-flex flex-column flex-lg-row flex-column-fluid bg-white login-signup-on" id="kt_login">
             <!--begin::Aside-->
             <div class="login-aside d-flex flex-column flex-row-auto" style="background-color: #F2C98A;">
                 <!--begin::Aside Top-->
@@ -59,46 +59,75 @@
             <div class="login-content flex-row-fluid d-flex flex-column justify-content-center position-relative overflow-hidden p-7 mx-auto">
                 <!--begin::Content body-->
                 <div class="d-flex flex-column-fluid flex-center">
-                    <!--begin::Signin-->
-                    <div class="login-form login-signin">
+                    <!--begin::Signup-->
+                    <div class="login-form login-signup">
                         <!--begin::Form-->
-                        <form asp-controller="Account" asp-action="Login" method="post" class="form">
+                        <form asp-controller="Account" asp-action="Register" method="post" class="form">
                             <!--begin::Title-->
                             <div class="pb-13 pt-lg-0 pt-5">
-                                <h3 class="font-weight-bolder text-dark font-size-h4 font-size-h1-lg">Welcome to HutechStore</h3>
-                                <span class="text-muted font-weight-bold font-size-h4">
-                                    New Here?
-                                    <a href="@Url.Action("Register", "Account")" class="text-primary font-weight-bolder">Create an Account</a>
-                                </span>
+                                <h3 class="font-weight-bolder text-dark font-size-h4 font-size-h1-lg">Đăng Ký</h3>
+                                <p class="text-muted font-weight-bold font-size-h4">Enter your details to create your account</p>
                                 <div asp-validation-summary="All" class="text-danger"></div>
                             </div>
-                            <!--begin::Title-->
+                            <!--end::Title-->
                             <!--begin::Form group-->
                             <div class="form-group">
-                                <label class="font-size-h6 font-weight-bolder text-dark">Tên đăng nhập</label>
-                                <input asp-for="UserName" type="text" class="form-control form-control-solid h-auto py-6 px-6 rounded-lg" autocomplete="off" />
+                                <input asp-for="UserName" type="text" placeholder="Tên đăng nhập" class="form-control form-control-solid h-auto py-6 px-6 rounded-lg font-size-h6" />
                                 <span asp-validation-for="UserName" class="text-danger"></span>
                             </div>
                             <!--end::Form group-->
                             <!--begin::Form group-->
                             <div class="form-group">
-                                <div class="d-flex justify-content-between mt-n5">
-                                    <label class="font-size-h6 font-weight-bolder text-dark pt-5">Mật khẩu</label>
-                                    <a href="javascript:;" class="text-primary font-size-h6 font-weight-bolder text-hover-primary pt-5" id="kt_login_forgot">Quên mật khẩu ?</a>
-                                </div>
-                                <input asp-for="Password" type="password" class="form-control form-control-solid h-auto py-6 px-6 rounded-lg" autocomplete="off" />
+                                <input asp-for="Password" type="password" placeholder="Mật khẩu" class="form-control form-control-solid h-auto py-6 px-6 rounded-lg font-size-h6" />
                                 <span asp-validation-for="Password" class="text-danger"></span>
                             </div>
                             <!--end::Form group-->
-                            <!--begin::Action-->
-                            <div class="pb-lg-0 pb-5">
-                                <button type="submit" class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-3">Đăng Nhập</button>
+                            <!--begin::Form group-->
+                            <div class="form-group">
+                                <input asp-for="ConfirmPassword" type="password" placeholder="Xác nhận mật khẩu" class="form-control form-control-solid h-auto py-6 px-6 rounded-lg font-size-h6" />
+                                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                             </div>
-                            <!--end::Action-->
+                            <!--end::Form group-->
+                            <!--begin::Form group-->
+                            <div class="form-group">
+                                <input asp-for="FirstName" type="text" placeholder="Tên" class="form-control form-control-solid h-auto py-6 px-6 rounded-lg font-size-h6" />
+                                <span asp-validation-for="FirstName" class="text-danger"></span>
+                            </div>
+                            <!--end::Form group-->
+                            <!--begin::Form group-->
+                            <div class="form-group">
+                                <input asp-for="LastName" type="text" placeholder="Họ" class="form-control form-control-solid h-auto py-6 px-6 rounded-lg font-size-h6" />
+                                <span asp-validation-for="LastName" class="text-danger"></span>
+                            </div>
+                            <!--end::Form group-->
+                            <!--begin::Form group-->
+                            <div class="form-group">
+                                <input asp-for="Email" type="email" placeholder="Email" class="form-control form-control-solid h-auto py-6 px-6 rounded-lg font-size-h6" />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                            <!--end::Form group-->
+                            <!--begin::Form group-->
+                            <div class="form-group">
+                                <input asp-for="PhoneNumber" type="number" placeholder="Số điện thoại" class="form-control form-control-solid h-auto py-6 px-6 rounded-lg font-size-h6" />
+                                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                            </div>
+                            <!--end::Form group-->
+                            <!--begin::Form group-->
+                            <div class="form-group">
+                                <input asp-for="Dob" type="date" placeholder="Ngày sinh" class="form-control form-control-solid h-auto py-6 px-6 rounded-lg font-size-h6" />
+                                <span asp-validation-for="Dob" class="text-danger"></span>
+                            </div>
+                            <!--end::Form group-->
+                            <!--begin::Form group-->
+                            <div class="form-group d-flex flex-wrap pb-lg-0 pb-3">
+                                <button type="submit" class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-4">Đăng Ký</button>
+                                <a href="@Url.Action("Login", "Account")" class="btn btn-light-primary font-weight-bolder font-size-h6 px-8 py-4 my-3">Đăng Nhập</a>
+                            </div>
+                            <!--end::Form group-->
                         </form>
                         <!--end::Form-->
                     </div>
-                    <!--end::Signin-->
+                    <!--end::Signup-->
                 </div>
                 <!--end::Content body-->
                 <!--begin::Content footer-->
