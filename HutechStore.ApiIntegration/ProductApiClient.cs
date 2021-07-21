@@ -90,6 +90,8 @@ namespace HutechStore.ApiIntegration
             requestContent.Add(new StringContent(request.SeoAlias.ToString()), "seoAlias");
             requestContent.Add(new StringContent(languageId), "languageId");
 
+            requestContent.Add(new StringContent(request.IsFeatured.ToString()), "isFeatured");
+
             var response = await client.PostAsync($"/api/products/", requestContent);
             return response.IsSuccessStatusCode;
         }
