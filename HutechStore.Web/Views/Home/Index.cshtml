@@ -58,7 +58,7 @@
                                 @foreach (var item in Model.FeaturedProducts)
                                 {
                                     var url = $"/{ViewBag.CurrentCulture}/san-pham/{item.Id}";
-                                    var thumbnailImage = ViewBag.BaseAddress + "/user-content/" + @item.ThumbnailImage;
+                                    var thumbnailImage = ViewBag.BaseAddress + @item.ThumbnailImage;
 
                                     <div class="col-md-4 col-lg-12 col-xxl-4">
                                         <!--begin::Card-->
@@ -105,7 +105,7 @@
                                 @foreach (var item in Model.LatestProducts)
                                 {
                                     var url = $"/{ViewBag.CurrentCulture}/product/{item.Id}";
-                                    var thumbnailImage = ViewBag.BaseAddress + "/user-content/" + @item.ThumbnailImage;
+                                    var thumbnailImage = ViewBag.BaseAddress + @item.ThumbnailImage;
 
                                     <div class="col-md-4 col-lg-12 col-xxl-4">
                                         <!--begin::Card-->

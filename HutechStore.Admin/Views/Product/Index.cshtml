@@ -315,7 +315,7 @@
                             @{
                                 Random rand = new Random();
                                 var states = new List<String>()
-                                                                                                                                                                                                                    {
+                                                                                                                                                                                                                                                                                {
                                     "success",
                                     "primary",
                                     "danger",
@@ -337,23 +337,34 @@
                                     <td class="datatable-cell">
                                         <span style="width: 250px;">
                                             <div class="d-flex align-items-center">
-                                                <div class="symbol symbol-40 symbol-light-@state flex-shrink-0">
-                                                    <span class="symbol-label font-size-h4 font-weight-bold">@item.Name.Substring(0, 1)</span>
-                                                </div>
+                                                @if (item.ThumbnailImage == null)
+                                                {
+                                                    <div class="symbol symbol-40 symbol-light-@state flex-shrink-0">
+                                                        <span class="symbol-label font-size-h4 font-weight-bold">@item.Name.Substring(0, 1)</span>
+                                                    </div>
+                                                }
+                                                else
+                                                {
+                                                    var thumbnailImage = ViewBag.BaseAddress + @item.ThumbnailImage;
+                                                    <div class="symbol symbol-40 symbol-sm flex-shrink-0">
+                                                        <img class="" src="@thumbnailImage" alt="@item.Name">
+                                                    </div>
+                                                }
                                                 <div class="ml-4">
-                                                    <div class="text-dark-75 font-weight-bolder font-size-lg mb-0">@item.Name</div> <a href="#" class="text-muted font-weight-bold text-hover-primary">@item.DateCreated</a>
+                                                    <div class="text-dark-75 font-weight-bolder font-size-lg mb-0">@item.Name</div> 
+                                                    <div class="text-muted font-weight-bold text-hover-primary">@item.DateCreated</div>
                                                 </div>
                                             </div>
                                         </span>
                                     </td>
                                     <td class="datatable-cell">
                                         <span style="width: 158px;">
-                                            <div class="font-weight-bolder font-size-lg mb-0">@item.OriginalPrice</div>
+                                            <div class="font-weight-bolder font-size-lg mb-0">@item.OriginalPrice.ToString("0")đ</div>
                                         </span>
                                     </td>
                                     <td class="datatable-cell">
                                         <span style="width: 158px;">
-                                            <div class="font-weight-bolder text-primary mb-0">@item.Price</div>
+                                            <div class="font-weight-bolder text-primary mb-0">@item.Price.ToString("0")đ</div>
                                         </span>
                                     </td>
                                     <td class="datatable-cell">

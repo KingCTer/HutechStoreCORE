@@ -35,8 +35,7 @@ namespace HutechStore.Web.Controllers
             ViewBag.CurrentCulture = CultureInfo.CurrentCulture.Name;
             return View(new ProductDetailViewModel()
             {
-                Product = product,
-                Category = await _categoryApiClient.GetById(culture, id)
+                Product = product
             });
         }
 

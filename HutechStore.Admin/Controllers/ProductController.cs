@@ -59,6 +59,7 @@ namespace HutechStore.Admin.Controllers
                 ViewBag.ResultState = TempData["resultState"];
                 ViewBag.ResultMsg = TempData["resultMsg"];
             }
+            ViewBag.BaseAddress = _configuration[SystemConstants.AppSettings.BaseAddress];
             return View(data);
         }
 
@@ -130,6 +131,33 @@ namespace HutechStore.Admin.Controllers
             }
 
             ModelState.AddModelError("", "Cập nhật sản phẩm thất bại");
+            return View(request);
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            return View(new ProductDeleteRequest()
+            {
+                Id = id
+            });
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(ProductDeleteRequest request)
+        {
+            if (!ModelState.IsValid)
+                return View();
+
+            var result = await _productApiClient.DeleteProduct(request.Id);
+            if (result)
+            {
+                TempData["resultState"] = TempDataConstants.ResultState.Success;
+                TempData["resultMsg"] = "Xoá sản phẩm thành công";
+                return RedirectToAction("Index");
+            }
+
+            ModelState.AddModelError("", "Xóa không thành công");
             return View(request);
         }
 
