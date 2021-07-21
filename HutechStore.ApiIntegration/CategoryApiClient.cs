@@ -1,5 +1,4 @@
-﻿using HutechStore.ApiIntegration;
-using HutechStore.ViewModels.Catalog.Categories;
+﻿using HutechStore.ViewModels.Catalog.Categories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
@@ -22,6 +21,11 @@ namespace HutechStore.ApiIntegration
         public async Task<List<CategoryVm>> GetAll(string languageId)
         {
             return await GetListAsync<CategoryVm>("/api/categories?languageId=" + languageId);
+        }
+
+        public async Task<CategoryVm> GetById(string languageId, int id)
+        {
+            return await GetAsync<CategoryVm>($"/api/categories/{id}/{languageId}");
         }
     }
 }
