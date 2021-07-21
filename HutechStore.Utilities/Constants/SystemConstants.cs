@@ -16,5 +16,10 @@
             public const int NumberOfFeaturedProducts = 6;
             public const int NumberOfLatestProducts = 12;
         }
+
+        public class ProductConstants
+        {
+            public const string NA = "N/A";
+        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using HutechStore.Application.Common;
 using HutechStore.Data.EF;
 using HutechStore.Data.Entities;
+using HutechStore.Utilities.Constants;
 using HutechStore.Utilities.Exceptions;
 using HutechStore.ViewModels.Catalog.ProductImages;
 using HutechStore.ViewModels.Catalog.Products;
@@ -59,6 +60,34 @@ namespace HutechStore.Application.Catalog.Products
 
         public async Task<int> Create(ProductCreateRequest request)
         {
+            var languages = _context.Languages;
+            var translations = new List<ProductTranslation>();
+            foreach (var language in languages)
+            {
+                if (language.Id == request.LanguageId)
+                {
+                    translations.Add(new ProductTranslation()
+                    {
+                        Name = request.Name,
+                        Description = request.Description,
+                        Details = request.Details,
+                        SeoDescription = request.SeoDescription,
+                        SeoAlias = request.SeoAlias,
+                        SeoTitle = request.SeoTitle,
+                        LanguageId = request.LanguageId
+                    });
+                }
+                else
+                {
+                    translations.Add(new ProductTranslation()
+                    {
+                        Name = SystemConstants.ProductConstants.NA,
+                        Description = SystemConstants.ProductConstants.NA,
+                        SeoAlias = SystemConstants.ProductConstants.NA,
+                        LanguageId = language.Id
+                    });
+                }
+            }
             var product = new Product()
             {
                 Price = request.Price,
@@ -66,19 +95,7 @@ namespace HutechStore.Application.Catalog.Products
                 Stock = request.Stock,
                 ViewCount = 0,
                 DateCreated = DateTime.Now,
-                ProductTranslations = new List<ProductTranslation>()
-                {
-                    new ProductTranslation()
-                    {
-                        Name =  request.Name,
-                        Description = request.Description,
-                        Details = request.Details,
-                        SeoDescription = request.SeoDescription,
-                        SeoAlias = request.SeoAlias,
-                        SeoTitle = request.SeoTitle,
-                        LanguageId = request.LanguageId
-                    }
-                }
+                ProductTranslations = translations
             };
             //Save image
             if (request.ThumbnailImage != null)
@@ -197,7 +214,8 @@ namespace HutechStore.Application.Catalog.Products
                 SeoTitle = productTranslation != null ? productTranslation.SeoTitle : null,
                 Stock = product.Stock,
                 ViewCount = product.ViewCount,
-                Categories = categories
+                Categories = categories,
+                IsFeatured = product.IsFeatured
             };
             return productViewModel;
         }
@@ -254,10 +272,17 @@ namespace HutechStore.Application.Catalog.Products
         public async Task<int> Update(ProductUpdateRequest request)
         {
             var product = await _context.Products.FindAsync(request.Id);
+
+            
+
             var productTranslations = await _context.ProductTranslations
                 .FirstOrDefaultAsync(x => x.ProductId == request.Id && x.LanguageId == request.LanguageId);
 
             if (product == null || productTranslations == null) throw new HutechStoreException($"Cannot find a product with id: {request.Id}");
+
+            product.DateCreated = DateTime.Now;
+
+            product.IsFeatured = request.IsFeatured;
 
             productTranslations.Name = request.Name;
             productTranslations.SeoAlias = request.SeoAlias;

@@ -7,5 +7,6 @@ namespace HutechStore.Admin.Models
     {
         public List<LanguageVm> Languages { get; set; }
         public string CurrentLanguageId { get; set; }
+        public string ReturnUrl { set; get; }
     }
 }

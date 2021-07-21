@@ -23,6 +23,7 @@
     <!--begin::Dropdown-->
     <form id="frmChangeLanguage" asp-controller="Home" asp-action="Language" method="post">
         <input asp-for="CurrentLanguageId" type="hidden" id="currenLanguage" name="CurrentLanguageId" />
+        <input asp-for="ReturnUrl" type="hidden" name="ReturnUrl" value="@Context.Request.Path" />
         <div class="dropdown-menu p-0 m-0 dropdown-menu-anim-up dropdown-menu-sm dropdown-menu-right">
             <!--begin::Nav-->
             <ul class="navi navi-hover py-4">
