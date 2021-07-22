@@ -2,6 +2,7 @@
     this.initialize = function () {
         regsiterEvents();
         loadData();
+        registerEventsUpdate();
     }
 
     this.initializeCart = function () {
@@ -51,11 +52,11 @@
                         '<div class="d-flex align-items-center mt-2">' +
                         '<span class="font-weight-bold mr-1 text-dark-75 font-size-lg">' + numberWithCommas(amount) + 'đ</span>' +
                         '<span class="text-muted mr-1">- SL</span>' +
-                        '<span class="font-weight-bold mr-2 text-dark-75 font-size-lg">' + item.quantity + '</span>' +
-                        '<a href="" class="btn btn-xs btn-light-success btn-icon mr-2">' +
+                        '<span id="txt_quantity_' + item.productId + '" class="font-weight-bold mr-2 text-dark-75 font-size-lg">' + item.quantity + '</span>' +
+                        '<a href="javascript:;" data-id="' + item.productId + '" class="btn btn-xs btn-light-success btn-icon mr-2 btn-minus">' +
                         '<i class="ki ki-minus icon-xs"></i>' +
                         '</a>' +
-                        '<a href="#" class="btn btn-xs btn-light-success btn-icon">' +
+                        '<a href="javascript:;" data-id="' + item.productId + '" class="btn btn-xs btn-light-success btn-icon btn-plus">' +
                         '<i class="ki ki-plus icon-xs"></i>' +
                         '</a>' +
                         '</div>' +
@@ -101,17 +102,17 @@
                         '<a href="' + url + '" class="text-dark text-hover-primary">' + item.name + '</a>' +
                         '</td>' +
                         '<td class="text-center align-middle">' +
-                        '<a href="javascript:;" class="btn btn-xs btn-light-success btn-icon mr-2">' +
+                        '<a href="javascript:;" data-id="' + item.productId + '" class="btn btn-xs btn-light-success btn-icon mr-2 btn-minus">' +
                         '<i class="ki ki-minus icon-xs"></i>' +
                         '</a>' +
-                        '<span class="mr-2 font-weight-bolder">' + item.quantity + '</span>' +
-                        '<a href="javascript:;" class="btn btn-xs btn-light-success btn-icon">' +
+                        '<span id="txt_quantity_' + item.productId + '" class="mr-2 font-weight-bolder">' + item.quantity + '</span>' +
+                        '<a href="javascript:;" data-id="' + item.productId + '" class="btn btn-xs btn-light-success btn-icon btn-plus">' +
                         '<i class="ki ki-plus icon-xs"></i>' +
                         '</a>' +
                         '</td>' +
                         '<td class="text-right align-middle font-weight-bolder font-size-h5">' + numberWithCommas(amount) + 'đ</td>' +
                         '<td class="text-right align-middle">' +
-                        '<a href="#" class="btn btn-danger font-weight-bolder font-size-sm">Xoá</a>' +
+                        '<a href="javascript:;" data-id="' + item.productId + '" class="btn btn-danger font-weight-bolder font-size-sm btn-remove">Xoá</a>' +
                         '</td>' +
                         '</tr>';
 
@@ -123,6 +124,46 @@
             }
         });
     }
+
+    function registerEventsUpdate() {
+        $('body').on('click', '.btn-plus', function (e) {
+            e.preventDefault();
+            const id = $(this).data('id');
+            const quantity = parseInt($('#txt_quantity_' + id).text()) + 1;
+            updateCart(id, quantity);
+        });
+
+        $('body').on('click', '.btn-minus', function (e) {
+            e.preventDefault();
+            const id = $(this).data('id');
+            const quantity = parseInt($('#txt_quantity_' + id).text()) - 1;
+            updateCart(id, quantity);
+        });
+        $('body').on('click', '.btn-remove', function (e) {
+            e.preventDefault();
+            const id = $(this).data('id');
+            updateCart(id, 0);
+        });
+    }
+
+    function updateCart(id, quantity) {
+        $.ajax({
+            type: "POST",
+            url: '/Cart/UpdateCart',
+            data: {
+                id: id,
+                quantity: quantity
+            },
+            success: function (res) {
+                loadData();
+                loadCart();
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+    }
+
 }
 
 function numberWithCommas(x) {

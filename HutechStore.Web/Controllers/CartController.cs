@@ -35,22 +35,25 @@ namespace HutechStore.Web.Controllers
                 currentCart = JsonConvert.DeserializeObject<List<CartItemViewModel>>(session);
 
             int quantity = 1;
+            CartItemViewModel cartItem;
             if (currentCart.Any(x => x.ProductId == id))
             {
                 quantity = currentCart.First(x => x.ProductId == id).Quantity + 1;
+                currentCart.First(x => x.ProductId == id).Quantity = quantity;
             }
-
-            var cartItem = new CartItemViewModel()
+            else
             {
-                ProductId = id,
-                Description = product.Description,
-                Image = product.ThumbnailImage,
-                Name = product.Name,
-                Price = product.Price,
-                Quantity = quantity
-            };
-
-            currentCart.Add(cartItem);
+                cartItem = new CartItemViewModel()
+                {
+                    ProductId = id,
+                    Description = product.Description,
+                    Image = product.ThumbnailImage,
+                    Name = product.Name,
+                    Price = product.Price,
+                    Quantity = quantity
+                };
+                currentCart.Add(cartItem);
+            }
 
             HttpContext.Session.SetString(SystemConstants.CartSession, JsonConvert.SerializeObject(currentCart));
             return Ok(currentCart);
@@ -63,6 +66,30 @@ namespace HutechStore.Web.Controllers
             List<CartItemViewModel> currentCart = new List<CartItemViewModel>();
             if (session != null)
                 currentCart = JsonConvert.DeserializeObject<List<CartItemViewModel>>(session);
+            return Ok(currentCart);
+        }
+
+        public IActionResult UpdateCart(int id, int quantity)
+        {
+            var session = HttpContext.Session.GetString(SystemConstants.CartSession);
+            List<CartItemViewModel> currentCart = new List<CartItemViewModel>();
+            if (session != null)
+                currentCart = JsonConvert.DeserializeObject<List<CartItemViewModel>>(session);
+
+            foreach (var item in currentCart)
+            {
+                if (item.ProductId == id)
+                {
+                    if (quantity == 0)
+                    {
+                        currentCart.Remove(item);
+                        break;
+                    }
+                    item.Quantity = quantity;
+                }
+            }
+
+            HttpContext.Session.SetString(SystemConstants.CartSession, JsonConvert.SerializeObject(currentCart));
             return Ok(currentCart);
         }
     }
