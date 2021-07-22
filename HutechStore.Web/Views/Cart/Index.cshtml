@@ -4,6 +4,13 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@section PageScripts{
+    <script>
+        site.initializeCart();
+    </script>
+}
+
+
 <!--begin::Entry-->
 <div class="d-flex flex-column-fluid">
     <!--begin::Container-->
@@ -321,7 +328,7 @@
                         </h3>
                         <div class="card-toolbar">
                             <div class="dropdown dropdown-inline">
-                                <a href="#" class="btn btn-primary font-weight-bolder font-size-sm">Continue Shopping</a>
+                                <a href="@Url.Action("Index", "Home")" class="btn btn-primary font-weight-bolder font-size-sm">Continue Shopping</a>
                             </div>
                         </div>
                     </div>
@@ -333,90 +340,24 @@
                                 <!--begin::Cart Header-->
                                 <thead>
                                     <tr>
-                                        <th>Product</th>
-                                        <th class="text-center">Qty</th>
-                                        <th class="text-right">Price</th>
+                                        <th>Tên sản phẩm</th>
+                                        <th class="text-center">Số lượng</th>
+                                        <th class="text-right">Thành tiền</th>
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <!--end::Cart Header-->
-                                <tbody>
+                                <tbody id="cart_content">
                                     <!--begin::Cart Content-->
-                                    <tr>
-                                        <td class="d-flex align-items-center font-weight-bolder">
-                                            <!--begin::Symbol-->
-                                            <div class="symbol symbol-60 flex-shrink-0 mr-4 bg-light">
-                                                <div class="symbol-label" style="background-image: url('/assets/media/products/11.png')"></div>
-                                            </div>
-                                            <!--end::Symbol-->
-                                            <a href="#" class="text-dark text-hover-primary">Street Sneakers</a>
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            <a href="javascript:;" class="btn btn-xs btn-light-success btn-icon mr-2">
-                                                <i class="ki ki-minus icon-xs"></i>
-                                            </a>
-                                            <span class="mr-2 font-weight-bolder">1</span>
-                                            <a href="javascript:;" class="btn btn-xs btn-light-success btn-icon">
-                                                <i class="ki ki-plus icon-xs"></i>
-                                            </a>
-                                        </td>
-                                        <td class="text-right align-middle font-weight-bolder font-size-h5">$90.00</td>
-                                        <td class="text-right align-middle">
-                                            <a href="#" class="btn btn-danger font-weight-bolder font-size-sm">Remove</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="d-flex align-items-center font-weight-bolder">
-                                            <!--begin::Symbol-->
-                                            <div class="symbol symbol-60 flex-shrink-0 mr-4 bg-light">
-                                                <div class="symbol-label" style="background-image: url('/assets/media/products/2.png')"></div>
-                                            </div>
-                                            <!--end::Symbol-->
-                                            <a href="#" class="text-dark text-hover-primary">Headphones</a>
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            <a href="javascript:;" class="btn btn-xs btn-light-success btn-icon mr-2">
-                                                <i class="ki ki-minus icon-xs"></i>
-                                            </a>
-                                            <span class="mr-2 font-weight-bolder">1</span>
-                                            <a href="javascript:;" class="btn btn-xs btn-light-success btn-icon">
-                                                <i class="ki ki-plus icon-xs"></i>
-                                            </a>
-                                        </td>
-                                        <td class="text-right align-middle font-weight-bolder font-size-h5">$449.00</td>
-                                        <td class="text-right align-middle">
-                                            <a href="#" class="btn btn-danger font-weight-bolder font-size-sm">Remove</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="d-flex align-items-center font-weight-bolder">
-                                            <!--begin::Symbol-->
-                                            <div class="symbol symbol-60 flex-shrink-0 mr-4 bg-light">
-                                                <div class="symbol-label" style="background-image: url('/assets/media/products/1.png')"></div>
-                                            </div>
-                                            <!--end::Symbol-->
-                                            <a href="#" class="text-dark text-hover-primary">Smartwatch</a>
-                                        </td>
-                                        <td class="text-center align-middle">
-                                            <a href="javascript:;" class="btn btn-xs btn-light-success btn-icon mr-2">
-                                                <i class="ki ki-minus icon-xs"></i>
-                                            </a>
-                                            <span class="mr-2 font-weight-bolder">1</span>
-                                            <a href="javascript:;" class="btn btn-xs btn-light-success btn-icon">
-                                                <i class="ki ki-plus icon-xs"></i>
-                                            </a>
-                                        </td>
-                                        <td class="text-right align-middle font-weight-bolder font-size-h5">$999.00</td>
-                                        <td class="text-right align-middle">
-                                            <a href="#" class="btn btn-danger font-weight-bolder font-size-sm">Remove</a>
-                                        </td>
-                                    </tr>
                                     <!--end::Cart Content-->
+
+                                </tbody>
+                                <tfoot>
                                     <!--begin::Cart Footer-->
                                     <tr>
                                         <td colspan="2"></td>
                                         <td class="font-weight-bolder font-size-h4 text-right">Subtotal</td>
-                                        <td class="font-weight-bolder font-size-h4 text-right">$1538.00</td>
+                                        <td id="lbl_cart_subtotal" class="font-weight-bolder font-size-h4 text-right">0đ</td>
                                     </tr>
                                     <tr>
                                         <td colspan="4" class="border-0 text-muted text-right pt-0">Excludes Delivery. GST Included</td>
@@ -444,7 +385,7 @@
                                         </td>
                                     </tr>
                                     <!--end::Cart Footer-->
-                                </tbody>
+                                </tfoot>
                             </table>
                         </div>
                         <!--end::Shopping Cart-->
